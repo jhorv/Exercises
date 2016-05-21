@@ -1,3 +1,5 @@
+-- Does really poorly on submission. 0/100.
+
 module Main where
   import qualified Data.Text as T
   import qualified Data.Text.IO as TIO

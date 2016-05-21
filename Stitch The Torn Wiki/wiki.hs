@@ -1,3 +1,5 @@
+-- 31/100.
+
 module Main where
   import qualified Data.Set as S
   import qualified Data.Map.Strict as M
@@ -43,8 +45,7 @@ module Main where
       (set_a_tf,set_b_tf) =
         let
           getFrequencyMap :: [T.Text] -> M.Map Int Int
-          getFrequencyMap =
-              foldl (\m k -> M.insertWith (+) (index_of_word k) 1 m) M.empty
+          getFrequencyMap = foldl (\m k -> M.insertWith (+) (index_of_word k) 1 m) M.empty
           in (map getFrequencyMap set_a,map getFrequencyMap set_b)
           :: ([M.Map Int Int],[M.Map Int Int])
 
