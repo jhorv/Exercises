@@ -2,7 +2,7 @@
 
 5/21/2016:
 
-Some of the exercises I did in Haskell based on the HackerRank NLP section. The purpose of this is so I can learn how to program Haskell effectively. `Byte The Correct Apple` and `Stitch The Torn Wiki` currently do not give that much points. I tried using cosine similarity for the first, but it did not turn out that well, I haven't gotten even a single point. For comparison a random algorithm got me 6/100. The second did a bit better at 31/100, but it should be possible to get 95% without cheating.
+Some of the exercises I did in Haskell based on the HackerRank NLP section. The purpose of this is so I can learn how to program Haskell effectively. [`Byte The Correct Apple`](https://www.hackerrank.com/challenges/byte-the-correct-apple) and [`Stitch The Torn Wiki`](https://www.hackerrank.com/challenges/stitch-the-torn-wiki) currently do not give that much points. I tried using cosine similarity for the first, but it did not turn out that well, I haven't gotten even a single point. For comparison a random algorithm got me 6/100. The second did a bit better at 31/100, but it should be possible to get 95% without cheating.
 
 Everyone is cheating on HackerRank though. The leaderboards are completely meaningless.
 
