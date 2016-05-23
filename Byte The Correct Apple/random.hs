@@ -1,3 +1,5 @@
+-- Makes random outputs.
+
 module Main where
   import System.Random
 

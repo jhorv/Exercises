@@ -1,4 +1,13 @@
 -- Does really poorly on submission. 0/100.
+-- UPDATE: I did some research on Naive Bayes, but on this problem
+-- I can't imagine it doing better than what I have here.
+
+-- In fact it would be even simpler than what I currently have here.
+
+-- Nope. Honestly for this problem I should use Python with a NLP library
+-- for stemming as shown here: http://stackoverflow.com/questions/771918/how-do-i-do-word-stemming-or-lemmatization
+
+
 
 module Main where
   import qualified Data.Text as T
@@ -80,6 +89,16 @@ module Main where
           let idf' = fromMaybe (error "No df found!") (M.lookup k idf)
             in tf*idf') tf
 
+  weightedTfVectorFromWeigtedMap :: M.Map Int Float -> V.Vector (Int,Float)
+  weightedTfVectorFromWeigtedMap =
+    let
+      normalize :: V.Vector (Int, Float) -> V.Vector (Int, Float)
+      normalize vec =
+        let l = sqrt $ V.foldl (\s (_,v) -> s+v*v) 0 vec
+          in V.map (\(i,v) -> (i, v / l)) vec
+      in
+        normalize . V.fromList . M.toList
+
   cosineSimilarity :: V.Vector (Int, Float) -> V.Vector (Int, Float) -> Float
   cosineSimilarity a b =
     let
@@ -113,14 +132,15 @@ module Main where
       mapsOfInput = map frMapFun wordsInInput
       mapOfAppleComputer = frMapFun wordsInAppleComputer
       mapOfAppleFruit = frMapFun wordsInAppleFruit
-      allMaps = mapOfAppleFruit : mapOfAppleComputer : mapsOfInput
-      idf = idfFromFrMaps allMaps
+      -- allMaps = mapOfAppleFruit : mapOfAppleComputer : mapsOfInput
+      -- idf = idfFromFrMaps allMaps
 
       inputTfs = map tfFromFrMap mapsOfInput
       compTfs = tfFromFrMap mapOfAppleComputer
       fruitTfs = tfFromFrMap mapOfAppleFruit
 
-      tfIdfFun = weightedTfIdfVectorFromWeigtedMap idf
+      --tfIdfFun = weightedTfIdfVectorFromWeigtedMap idf
+      tfIdfFun = weightedTfVectorFromWeigtedMap
       vecInput = map tfIdfFun inputTfs
       vecComp = tfIdfFun compTfs
       vecFruit = tfIdfFun fruitTfs
