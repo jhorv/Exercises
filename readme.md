@@ -76,3 +76,13 @@ At that point, the technological Singularity would move from being an abstract p
 
 
 ...I need to start on the problem. Let me get on with it.
+
+5/24/2016:
+
+It turns out that on Futhark `ghc-mod` such up more memory than my computer can muster. When I try to load Futhark, it takes up 5Gb and then runs out of memory. This caused me quite a bit of frustration. I now what people mean when they say that Haskell's tooling is not as good as F#'s.
+
+At any rate, I am done with [2-opt](https://en.wikipedia.org/wiki/2-opt) for the TBS problem. If I give the output from the problem example, it will improve the solution from 78 to about 83. Near the end, I used unfold to great effect for the first time. I also figured out how to use Debug.Trace as printf replacement. Excellent.
+
+The next comes figuring out how to do randomness. I need to do that to make the algorithm complete. Right now it is only a basic greedy optimizer. Once I add a stochastic component such as iterated local search, it will become something great. This would be trivial in F#, but currently I do not really understand how to deal with mutable state in Haskell even though I've done quite a bit of reading.
+
+I'll deal with that tomorrow.
