@@ -86,3 +86,15 @@ At any rate, I am done with [2-opt](https://en.wikipedia.org/wiki/2-opt) for the
 The next comes figuring out how to do randomness. I need to do that to make the algorithm complete. Right now it is only a basic greedy optimizer. Once I add a stochastic component such as iterated local search, it will become something great. This would be trivial in F#, but currently I do not really understand how to deal with mutable state in Haskell even though I've done quite a bit of reading.
 
 I'll deal with that tomorrow.
+
+5/25/2016:
+
+Yeah, this part will be difficult. I tried looking for Haskell imperative style tutorials, but most of those are about how to stop programming in imperative style and do functional. But for things like keeping track of time and randomness, state would really be good here.
+
+Adding the stochastic optimization elements to the TBS program would be trivial in an impure language, but here I am going to have to do some extra effort. I think I will pick some really easy HackerRank assignments and do them in an imperative fashion in Haskell.
+
+UPDATE: Oh, lol. “People who solved Time Conversion attempted this next: TBS Problem.”
+
+I think that one would be quite a leap after doing time conversion, holy crap. I think, I'll continue with the aforementioned problem. I think I have a decent grasp of how to do stateful computation using IO and ST monads now. One thing left to figure out is how to use mutable vector types and adapt the shuffle algorithm for it.
+
+UPDATE: I decided to go for random restarts instead of ILS. At any rate, it seems there is something wrong with the cost function. I'll double check it tomorrow. Except for that, I got all the machinery in place to beat this thing. Interesting that nobody got more than 22.63 points on this problem.

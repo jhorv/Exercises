@@ -1,12 +1,11 @@
 module Main where
-  import GHC.Prim
+  import System.Random
   import Control.Monad
-  import Control.Monad.ST
-  import Control.Monad.Primitive
 
   import qualified Debug.Trace as Tr
 
   import qualified Data.Vector.Unboxed as V
+  import qualified Data.Vector.Unboxed.Mutable as VM
   import Data.List
 
   (|>) :: a -> (a -> b) -> b
@@ -91,11 +90,13 @@ module Main where
             |> costOfReversedPath' 0 -- Adds an extra trip to HQ
             |> (\(_,_,_,profit,_) -> profit)
 
+      getVisitsToHQ = V.foldl' (\s x -> if x == 0 then s+1 else s)
+
       iterateTwoOpt :: (Float, V.Vector Int) -> (Float, V.Vector Int)
       iterateTwoOpt (cost,path) =
         let
-          number_of_visits_to_headquarters =
-            V.foldl' (\s x -> if x == 0 then s+1 else s) 0 path
+          number_of_visits_to_headquarters = getVisitsToHQ 0 path
+
           l = V.length path - 1
 
           -- Does not just swap the path, but reverses the middle as well.
@@ -129,16 +130,109 @@ module Main where
                 else (cost,path)
                 )
               ) (cost,path) [0..l-1]
-      t :: V.Vector Int
-      t = V.fromList [1,2,0,6,7,0,3,10]
-      c = costOfReversedPath t 2
-      in
-        print $
-          (c,t):
-          unfoldr (\c@(cost,path) ->
-            let n@(new_cost,new_path) = iterateTwoOpt c
-              in
-                if cost < new_cost
-                then Just(n,n)
-                else Nothing
-            ) (c,t)
+
+      -- Generally, iterated local search is better, but this
+      -- problem might be better suited for this kind of optimization.
+      optimizeWithRandomRestart :: IO (Float, V.Vector Int)
+      optimizeWithRandomRestart =
+        let
+          shuffle :: V.Vector Int -> IO (V.Vector Int)
+          shuffle xs =
+            let
+              n = V.length xs
+              in do
+                ar <- V.thaw xs
+                forM_ [0..n-1] $ \i -> do
+                  j <- randomRIO (i,n-1)
+                  vi <- VM.read ar i
+                  vj <- VM.read ar j
+                  VM.write ar j vi
+                  VM.write ar i vj
+                V.freeze ar
+
+          path' :: V.Vector Int
+          path' =
+            V.fromList $
+              replicate (3*tenth_of_cities) 0
+              ++ [1..number_of_cities_including_hq-1]
+
+          doTwoOptTillConvergence path =
+            let
+              cost = costOfReversedPath path (getVisitsToHQ 0 path)
+              loop c@(cost, path) =
+                let n@(new_cost,new_path) = iterateTwoOpt c
+                  in
+                    if cost < new_cost
+                    then loop n
+                    else c
+              in loop (cost, path)
+                -- (cost,path):
+                -- unfoldr (\c@(cost,path) ->
+                --   let n@(new_cost,new_path) = iterateTwoOpt c
+                --     in
+                --       if cost < new_cost
+                --       then Just(n,n)
+                --       else Nothing
+                --   ) (cost,path)
+          in do
+            r <- randomRIO (1, V.length path' - 1)
+            path <- liftM (V.take r) $ shuffle path'
+            return $ doTwoOptTillConvergence path
+
+      printCostFun :: V.Vector Int -> String
+      printCostFun =
+        let
+          cords :: Int -> (Int, Int)
+          cords x =
+            (cities V.! x)
+            |> \(x,y,_) -> (round x,round y)
+
+          removeAdjacentHQFun :: V.Vector Int -> V.Vector Int
+          removeAdjacentHQFun =
+            let
+              loop :: [Int] -> [Int]
+              loop l =
+                case l of
+                  0:0:xs -> loop (0:xs)
+                  [0] -> []
+                  x:xs -> x : loop xs
+                  [] -> []
+            in
+              V.fromList . loop . V.toList
+
+          countFun :: V.Vector Int -> V.Vector (Int,Int,Int)
+          countFun =
+            V.postscanr' (\c (x,y,num) ->
+              if c /= 0
+              then
+                let (cx,cy) = cords c
+                in (cx,cy,num+1)
+              else (0,0,0)
+            ) (0,0,0)
+          stringFun :: V.Vector (Int,Int,Int) -> String
+          stringFun =
+            let
+              loop :: [(Int,Int,Int)] -> [String]
+              loop l =
+                case l of
+                  (x,y,c):(x',y',0):xs ->
+                    unwords [show x, show y, show c] :
+                    unwords [show x', show y'] :
+                    loop xs
+                  (x,y,c):[] ->
+                    unwords [show x, show y, show c] : loop []
+                  (x,y,_):xs ->
+                    unwords [show x, show y] :
+                    loop xs
+                  [] -> []
+              in unlines . reverse . loop . reverse . V.toList
+          in stringFun . countFun . removeAdjacentHQFun
+      in do
+        s <- foldM (\c _ ->
+            let
+              f c@(cost,_) n@(new_cost,_) = if cost < new_cost then n else c
+            in fmap (f c) optimizeWithRandomRestart
+          ) (-10000,V.empty) [1..500]
+        --putStr $ printCostFun $ snd s
+        --print [show s,printCostFun $ snd s]
+        print $ costOfReversedPath (V.fromList [2,4,5,6,7,0,3,10,9,0]) 3
