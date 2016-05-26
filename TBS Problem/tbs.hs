@@ -232,7 +232,7 @@ module Main where
             let
               f c@(cost,_) n@(new_cost,_) = if cost < new_cost then n else c
             in fmap (f c) optimizeWithRandomRestart
-          ) (-10000,V.empty) [1..500]
-        --putStr $ printCostFun $ snd s
+          ) (-10000,V.empty) [1..1]
+        putStr $ printCostFun $ snd s
         --print [show s,printCostFun $ snd s]
-        print $ costOfReversedPath (V.fromList [2,4,5,6,7,0,3,10,9,0]) 3
+        --print $ costOfReversedPath (V.fromList [2,4,5,6,7,0,3,10,9,0]) 3

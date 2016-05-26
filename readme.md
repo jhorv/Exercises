@@ -98,3 +98,23 @@ UPDATE: Oh, lol. “People who solved Time Conversion attempted this next: TBS P
 I think that one would be quite a leap after doing time conversion, holy crap. I think, I'll continue with the aforementioned problem. I think I have a decent grasp of how to do stateful computation using IO and ST monads now. One thing left to figure out is how to use mutable vector types and adapt the shuffle algorithm for it.
 
 UPDATE: I decided to go for random restarts instead of ILS. At any rate, it seems there is something wrong with the cost function. I'll double check it tomorrow. Except for that, I got all the machinery in place to beat this thing. Interesting that nobody got more than 22.63 points on this problem.
+
+5/26/2016:
+
+I checked the cost function in F# and it is close. Well, it is still wrong, but that does not explain why I get runtime errors on test cases #3 and #4, nor why does it timeout on #2 even when I restrict it to only a single iteration.
+
+But generally, I've realized now that my approach to this problem has been completely wrong. Instead of doing the cost function in reverse, it would have been much better to do two passes.
+
+On the face of it, that would be more inefficient, but what would that allow me it to take the max over all the subsequences easily. It would have been exponentially better than what I have now. It would also allow me to add stochasticity easily by allowing the swap if the swap does not change the cost.
+
+Also, one thing that I should have done at the start is account for the fact that HackerRank is an online judge and I have strict limits there. So the algorithm has to do well on a variety of test cases. I should not have used the N^2 2-opt, but made stochastic swaps instead.
+
+The reason why I have not done so is because I started out this problem not knowing how to handle mutable state and deferred learning it until I got into the problem.
+
+Now that I have tried it, I can see that a pure language like Haskell is particularly poorly suited for stochastic optimization. I am going to call bullshit on it being the [best imperative language](http://stackoverflow.com/questions/6622524/why-is-haskell-sometimes-referred-to-as-best-imperative-language). It would be a contender for the best functional language, if the [`ghc-mod` issue](https://github.com/DanielG/ghc-mod/issues/797) can be resolved, but imperative - nah.
+
+So now that, I got some exp, I will actually give up on the TBS problem. I am tempted to do it in F# since I like discrete optimization, but my focus now is to upgrade my Haskell skills to work on a compiler. Thankfully, that task can be done in a purely functional manner.
+
+In general, the test cases for the TBS problem cannot be paid for, and on the leaderboards, the highest score is 22.63 out of 100. That just tells you how hard the thing is.
+
+From here, I'll pick problems that do not require specialized libraries nor handling of mutable state. Let's see...
