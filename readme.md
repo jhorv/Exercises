@@ -154,3 +154,27 @@ I hate going against my own best practices that I've so painstakingly built up. 
 Haskell is a language most suited for writing compilers, which is what I am learning it for.
 
 In the real world is there a feeling that better describes being stuck in a local minima than hatred of giving up power?
+
+UPDATE: I ended up adapting [this example](http://jelv.is/blog/Lazy-Dynamic-Programming/) to use the `Data.Vector`. Actually, the end result is quite satisfactory. Given that I've only seen list and tree examples, until I've stumbled on the above, I had no idea this was even possible.
+
+While unintuitive, I can't say that the final result is not elegant.
+
+Hmmmm...it might be possible to make the same thing work in F# as well by populating an array with lazy function calls, though that would be slower than storing values inside a dictionary. They would get evaluated only once, the same as in Haskell due to being lazy.
+
+UPDATE: As there is still a third of the day left, at random I picked a [different problem](https://www.hackerrank.com/challenges/ncr-table) and it turns out that it is quite a good fit for dynamic programming.
+
+Pascal's triangle has a recursive definition of:
+0 C 0 = 1
+n C k = (n-1) C k + (n-1) C (k-1)
+
+In fact, calculating the above recursively via dynamic programming is actually the correct way to go as taking the factorial of 1000 would require 10e^300 memory.
+
+So now I know how to do dynamic programming efficiently with arrays in Haskell, but I am not sure to make the program return the calculated array instead of the end result which is what I would need to print all the results in a row.
+
+...Actually, just have the topmost function return the array itself. Easy as pie.
+
+UPDATE: Only took me an hour and a half. Done with the nCr table problem.
+
+I'll try this [one next](https://www.hackerrank.com/challenges/separate-the-chocolate). I picked that one purely for points. I haven't figured out the way to solve it yet, given the complex constraints that it has, the problem reminds me of the constraint satisfaction problems in the Modeling Discrete Optimization course that I used MiniZinc to solve.
+
+Doing constraint satisfaction by hand is not something I know how to do, but it should be interesting to research. Hopefully I will be able to beat this problem if I give it a day or two.
