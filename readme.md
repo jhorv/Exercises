@@ -173,7 +173,7 @@ So now I know how to do dynamic programming efficiently with arrays in Haskell, 
 
 ...Actually, just have the topmost function return the array itself. Easy as pie.
 
-UPDATE: Only took me an hour and a half. Done with the nCr table problem using dynamic programming.
+UPDATE: Only took me an hour and a half. Done with the nCr table problem using dynamic programming. It was easy enough to adapt the fibonacci assignment code for this.
 
 I'll try this [one next](https://www.hackerrank.com/challenges/separate-the-chocolate). I picked that one purely for points. I haven't figured out the way to solve it yet, but given the complex constraints that it has the problem reminds me of the constraint satisfaction problems in the Modeling Discrete Optimization course that I used MiniZinc to solve.
 
@@ -184,3 +184,9 @@ UPDATE: I thought about it for a bit. That 250 point problem is really way beyon
 If it asked me to do a single optimal solution I could deal with it somehow using local search methods, but these geometric constraints combined with exhaustive search requirement are quite something. Even just the subgoals for this would be significant problems on their own.
 
 With the `Seperate the chocolate` problem as a goal, I'll spend the next few days putting the pieces together. It is more fun to do work when I have something unreachable to make the small gains worthwhile pursuing.
+
+UPDATE: I found [two](http://kti.mff.cuni.cz/~bartak/downloads/CPschool05notes.pdf) [papers](http://www.lirmm.fr/~bessiere/stock/TR06020.pdf) on CP and a [bigass book.](http://cswww.essex.ac.uk/CSP/papers/CP_Handbook-20060315-final.pdf) The first paper in particular seems quite readable. It might be worth implementing techniques inside it as I work on some simpler problems.
+
+This is killing two birds with one stone. Acquiring new techniques while learning a new language. Unlike probabilistic programming, HackerRank and similar sites are the ideal platform for this.
+
+I'll do the above in parallel with going through the dynamic programming section.
