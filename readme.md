@@ -132,3 +132,25 @@ There might be benefits to purity on larger team projects. With my own code, I p
 Still, I am not convinced that Haskell style monads are the way to go.
 
 Dlang for example has the [`pure` keyword](http://klickverbot.at/blog/2012/05/purity-in-d/). I did not do any programming in D to speak off, but having something like that would be nice in F#. [The language](https://fslang.uservoice.com/forums/245727-f-language/suggestions/5670335-pure-functions-pure-keyword) suggestion got nixed by Don Syme though.
+
+5/27/2016:
+
+The next problem up is [Fibonacci Modified](https://www.hackerrank.com/challenges/fibonacci-modified). Once could do it using a fold or a loop in an imperative language, but as it is an intro problem to the dynamic programming section, the way to solve it that would set up the field for the later problems would be to use memoization.
+
+In F# this would be easy - I could just use a Dictionary to cache the function call values and using first class functions hide all of that from the rest of the code. An incredibly elegant and efficient solution.
+
+The easy way of doing it in Haskell would be using infinite lists which would have linear access times. A better way would be to [use trees](http://stackoverflow.com/questions/3208258/memoization-in-haskell) or perhaps [tries](http://conal.net/blog/posts/elegant-memoization-with-functional-memo-tries) as suggested [here](http://stackoverflow.com/questions/22790284/translating-imperative-memoization-code-to-haskell?rq=1).
+
+Unfortunately, memoTries are not a part of the standard library. And looking at the above links, one might get a sense of why it took me 8h instead 30m to do BFS yesterday. Today will be much the same it seems.
+
+Learning Haskell gives me such complicated feelings. Back in March while I was on working on the GVGAI-Fsharp library, it was time to put pathfinding into it for the Pacman game and I ended up spending a good three weeks studying. At the end of that I ended up internalizing a great deal of knowledge on searches and as I side effect, I completely internalized dynamic programming during that time. Given its link to optimization, it was a subject that greatly interested me for a long time, so I considered it a great achievement.
+
+I do understand dynamic programming now.
+
+During my programming journey I also took great care to understand what makes code performant and how to maximize both that along with my own programming effort. Making code fast generally boils down to using the right algorithm for the job and - optimizing memory access patterns. That last one means not using cache wrecking structures like lists and trees, which Haskell likes to use everywhere. I read in the Real World Haskell book that Map structures based on trees are competitive with hash based approaches, but that is a bold faced lie. O (log n) is really not O(1), not in the real world.
+
+I hate going against my own best practices that I've so painstakingly built up. By trees instead of imperative structures, not only will I be introducing complexities into my code and therefore unsafety, but also giving up power as well. Programming is not math.
+
+Haskell is a language most suited for writing compilers, which is what I am learning it for.
+
+In the real world is there a feeling that better describes being stuck in a local minima than hatred of giving up power?
