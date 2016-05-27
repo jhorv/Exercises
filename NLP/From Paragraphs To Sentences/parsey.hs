@@ -1,3 +1,5 @@
+-- 36.7/40. This one is correct.
+
 module Main where
 import Data.Char
 

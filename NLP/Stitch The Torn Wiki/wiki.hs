@@ -1,4 +1,4 @@
--- 31/100.
+-- 31.67/100.
 
 module Main where
   import qualified Data.Set as S

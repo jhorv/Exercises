@@ -1,3 +1,5 @@
+-- Is correct, but gets 0/10 on submission.
+
 module Main where
    import qualified Data.Map.Strict as Map
    import qualified Data.Text as T

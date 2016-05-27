@@ -118,3 +118,17 @@ So now that, I got some exp, I will actually give up on the TBS problem. I am te
 In general, the test cases for the TBS problem cannot be paid for, and on the leaderboards, the highest score is 22.63 out of 100. That just tells you how hard the thing is.
 
 From here, I'll pick problems that do not require specialized libraries nor handling of mutable state. Let's see...
+
+UPDATE: I did the first sorting the first [graph theory](https://www.hackerrank.com/challenges/bfsshortreach) problem. Doing breadth first search in a functional manner for that later one pretty much killed me. Hybrid function/imperative style is definitely not the same as programming in a purely functional manner. Before I started this, I genuinely though I was good at functional programming, but I think now it turns out that I am just using it where it is the most convenient. And there are places where it is indeed much better than just imperative programming.
+
+These past two weeks of programming with Haskell have been a wild rollercoaster. Five more days left.
+
+I think my problem is that I am approaching Haskell with restraints on. If I was doing this in F#, I would just do whatever is the most effective in terms of programming effort, safety and efficiency tradeoffs, but here I seem to be solely focusing on the safety term and greatly paying for it in terms of programming effort.
+
+For one-man projects, the only kind of projects I've done so far, I think the hybrid style is definitely the strongest.
+
+There might be benefits to purity on larger team projects. With my own code, I pretty much know all the mutable state and it is not difficult to keep track of in F# anyway, but in a large project this might be more of an issue.
+
+Still, I am not convinced that Haskell style monads are the way to go.
+
+Dlang for example has the [`pure` keyword](http://klickverbot.at/blog/2012/05/purity-in-d/). I did not do any programming in D to speak off, but having something like that would be nice in F#. [The language](https://fslang.uservoice.com/forums/245727-f-language/suggestions/5670335-pure-functions-pure-keyword) suggestion got nixed by Don Syme though.

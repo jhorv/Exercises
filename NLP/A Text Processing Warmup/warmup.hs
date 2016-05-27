@@ -1,3 +1,5 @@
+-- 9.88/10.
+
 module Main where
   import qualified Data.Text as T
   import qualified Data.Text.IO as TIO
