@@ -159,7 +159,7 @@ UPDATE: I ended up adapting [this example](http://jelv.is/blog/Lazy-Dynamic-Prog
 
 While unintuitive, I can't say that the final result is not elegant.
 
-Hmmmm...it might be possible to make the same thing work in F# as well by populating an array with lazy function calls, though that would be slower than storing values inside a dictionary. They would get evaluated only once, the same as in Haskell due to being lazy.
+Hmmmm...it might be possible to make the same thing work in F# as well by populating an array with lazy function calls, though that would be slower than storing values inside a dictionary. ~~They would get evaluated only once, the same as in Haskell due to being lazy.~~ **(Edit: Strike trat. Laziness has nothing to do with it.)**
 
 UPDATE: As there is still a third of the day left, at random I picked a [different problem](https://www.hackerrank.com/challenges/ncr-table) and it turns out that it is quite a good fit for dynamic programming.
 
@@ -220,3 +220,13 @@ I definitely can't figure it out just like this. I would have to solve a small s
 For the time being, I'll do some of the easier problems, starting with [Maximum Subarray](https://www.hackerrank.com/challenges/maxsubarray).
 
 UPDATE: That one was simple enough. I did not even have to formalize the problem as a DP problem anyway. Now, [Coin Change](https://www.hackerrank.com/challenges/coin-change?h_r=next-challenge&h_v=legacy) is a true DP problem, similar to the knapsack one.
+
+UPDATE: Done with Coin Exchange. It took me 3h and 2.5h of those hours was figuring out how to emulate a double loop in Haskell. My solution was pretty bad - list comprehensions.
+
+Though just as I finished that last sentence, I thought of how I would do this in Futhark and realized a much better solution that could be realized using nested maps.
+
+Ah, damn. I am distracted for some reason. I completely forgot that I already have aspects of the functional array style in my arsenal. It also now occurs to me now why the `accum` function exists in `Data.Vector`.
+
+I might be overwhelmed by Haskell's size...
+
+For the [Candies](https://www.hackerrank.com/challenges/candies?h_r=next-challenge&h_v=legacy) I'll see whether I can realize the lessons that I realized that now. Now that I know how to do DP in a purely functional style, I'll try avoiding lists and maps do the next problem using vectors types.
