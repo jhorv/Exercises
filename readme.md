@@ -190,3 +190,33 @@ UPDATE: I found [two](http://kti.mff.cuni.cz/~bartak/downloads/CPschool05notes.p
 This is killing two birds with one stone. Acquiring new techniques while learning a new language. Unlike probabilistic programming, HackerRank and similar sites are the ideal platform for this.
 
 I'll do the above in parallel with going through the dynamic programming section.
+
+5/28/2016:
+
+Spent the last 3.5 hours just thinking about the Choco problem. I also went through the [first paper](http://kti.mff.cuni.cz/~bartak/downloads/CPschool05notes.pdf) on Constraint Propagation. I actually do not think this problem has anything to do with CP. It really is a DP problem that tests the user's skill at reasoning with compressed graph representations.
+
+I figured out how to solve it on a small scale using search techniques, but when I started thinking how I could combine BFS with compression (in other words DP) I just arrived back at the original representation which made me wonder whether it is possible to solve it with DP after all. It should be possible given that it is in the DP section and all.
+
+My best idea currently-
+
+Suppose I had a sequence of graphs like this:
+
+Q-W
+E-R
+A-A
+A-B
+B-A
+B-B
+
+I could compress it like this.
+Q-W
+E-R
+{A-B}-{A-B}
+
+When adding a new node, I just unpack the above, test all the constraints and the compress it again. One positive aspect to this would be that it would be easy to compress the nodes using a sort. Though, as I noted the above makes me wonder whether the it would be possible to do inference directly on the compressed graph.
+
+I definitely can't figure it out just like this. I would have to solve a small scale problem using BFS and then look for patterns.
+
+For the time being, I'll do some of the easier problems, starting with [Maximum Subarray](https://www.hackerrank.com/challenges/maxsubarray).
+
+UPDATE: That one was simple enough. I did not even have to formalize the problem as a DP problem anyway. Now, [Coin Change](https://www.hackerrank.com/challenges/coin-change?h_r=next-challenge&h_v=legacy) is a true DP problem, similar to the knapsack one.
