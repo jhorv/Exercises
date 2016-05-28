@@ -159,7 +159,7 @@ UPDATE: I ended up adapting [this example](http://jelv.is/blog/Lazy-Dynamic-Prog
 
 While unintuitive, I can't say that the final result is not elegant.
 
-Hmmmm...it might be possible to make the same thing work in F# as well by populating an array with lazy function calls, though that would be slower than storing values inside a dictionary. ~~They would get evaluated only once, the same as in Haskell due to being lazy.~~ **(Edit: Strike trat. Laziness has nothing to do with it.)**
+Hmmmm...it might be possible to make the same thing work in F# as well by populating an array with lazy function calls, though that would be slower than storing values inside a dictionary. ~~They would get evaluated only once, the same as in Haskell due to being lazy.~~ **(Edit: Strike that. Laziness has nothing to do with it.)**
 
 UPDATE: As there is still a third of the day left, at random I picked a [different problem](https://www.hackerrank.com/challenges/ncr-table) and it turns out that it is quite a good fit for dynamic programming.
 
@@ -201,17 +201,21 @@ My best idea currently-
 
 Suppose I had a sequence of graphs like this:
 
+```
 Q-W
 E-R
 A-A
 A-B
 B-A
 B-B
+```
 
 I could compress it like this.
+```
 Q-W
 E-R
 {A-B}-{A-B}
+```
 
 When adding a new node, I just unpack the above, test all the constraints and the compress it again. One positive aspect to this would be that it would be easy to compress the nodes using a sort. Though, as I noted the above makes me wonder whether the it would be possible to do inference directly on the compressed graph.
 
@@ -229,4 +233,8 @@ Ah, damn. I am distracted for some reason. I completely forgot that I already ha
 
 I might be overwhelmed by Haskell's size...
 
-For the [Candies](https://www.hackerrank.com/challenges/candies?h_r=next-challenge&h_v=legacy) I'll see whether I can realize the lessons that I realized that now. Now that I know how to do DP in a purely functional style, I'll try avoiding lists and maps do the next problem using vectors types.
+Writing good code is partly a mindset for me.
+
+For the [Candies](https://www.hackerrank.com/challenges/candies?h_r=next-challenge&h_v=legacy) I'll see whether I can realize the lessons that I realized that now. Now that I know how to do DP in a purely functional style, I'll try avoiding lists and maps do the next problem using vector types.
+
+UPDATE: I am nearly done with Candies, but might have coded myself into a hole with that one due to its laziness. I won't be able to finish it today at rate. I might try it in F# tomorrow if I do not get an [answer on SO](http://stackoverflow.com/questions/37501967/how-to-make-fromlist-lazy-in-this-dynamic-programming-example) just to make sure the algorithm works correctly. Right now I am getting runtime errors, probably due to running out memory.
