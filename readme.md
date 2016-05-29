@@ -238,3 +238,9 @@ Writing good code is partly a mindset for me.
 For the [Candies](https://www.hackerrank.com/challenges/candies?h_r=next-challenge&h_v=legacy) I'll see whether I can realize the lessons that I realized that now. Now that I know how to do DP in a purely functional style, I'll try avoiding lists and maps do the next problem using vector types.
 
 UPDATE: I am nearly done with Candies, but might have coded myself into a hole with that one due to its laziness. I won't be able to finish it today at rate. I might try it in F# tomorrow if I do not get an [answer on SO](http://stackoverflow.com/questions/37501967/how-to-make-fromlist-lazy-in-this-dynamic-programming-example) just to make sure the algorithm works correctly. Right now I am getting runtime errors, probably due to running out memory.
+
+5/29/2016:
+
+The answer I got is good, but it obligates me to study the [continuation passing style](https://en.wikibooks.org/wiki/Haskell/Continuation_passing_style) for a bit, until I can fully understand the code written in the answer. Once I do, I will replicate it in F# and submit that instead. I have only cursory understanding of CPS, just enough to recognize it, but not quite enough to use it. I never expected to run into this again. As expected from Haskell, I guess.
+
+UPDATE: chainCPS has a [confusing type signature.](http://stackoverflow.com/questions/37508652/what-is-the-type-of-the-variables-in-chaincps) Once I figure out what these continuation monads do, I will finally be able to implement the GOTO statement in Haskell.
