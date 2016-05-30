@@ -272,3 +272,7 @@ UPDATE: Done. The solution is similar to the last time, in that I need a double 
 For every stock I just need to sell it on its high, and that high can easily be gotten in linear time by doing a scanr' beforehand.
 
 I'll do [Grid Walking](https://www.hackerrank.com/challenges/grid-walking?h_r=next-challenge&h_v=legacy) next. Actually, it bothers me how slow even the linear algorithm is. I am tempted to rewrite this in F# just to figure out what is wrong.
+
+UPDATE: [Strings are](http://stackoverflow.com/questions/37526740/why-is-the-f-version-of-this-program-6x-faster-than-the-haskell-one) what is wrong it seems. I should have looked into `Bytestring` functions instead of relying `Data.Text`.
+
+I'll try [Grid Walking](https://www.hackerrank.com/challenges/grid-walking?h_r=next-challenge&h_v=legacy) next.
