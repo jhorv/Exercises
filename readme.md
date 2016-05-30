@@ -276,3 +276,31 @@ I'll do [Grid Walking](https://www.hackerrank.com/challenges/grid-walking?h_r=ne
 UPDATE: [Strings are](http://stackoverflow.com/questions/37526740/why-is-the-f-version-of-this-program-6x-faster-than-the-haskell-one) what is wrong it seems. I should have looked into `Bytestring` functions instead of relying `Data.Text`.
 
 I'll try [Grid Walking](https://www.hackerrank.com/challenges/grid-walking?h_r=next-challenge&h_v=legacy) next.
+
+UPDATE: At first I thought this problem might be too difficult for me, but then my brain did come through in the end. I do not think it has been doing a particularly stellar job in the past few weeks, but whoever is playing me finally rolled well.
+
+Let me explain a rough outline of how to do it.
+
+Assuming you know the DP programming basics by now, you could probably do a simpler version of the Grid Walking problem, that with one dimension.
+
+Assuming the dimension X is from [0..4] and you start at 2, you iterate something like this. Imagine you are doing breadth first search.
+
+```
+ 0 1 2 3 4
+[0,1,0,1,0]
+```
+
+This represents starting at position 2 and then making 1 move `LEFT` and 1 move `RIGHT`.
+
+Then you do another sweep of BFS.
+
+```
+ 0 1 2 3 4
+[1,1,2,1,1]
+```
+
+The 2 in the middle is because the two positions merge - this merging of invariant representations is the heart of dynamic programming. But rather than do BFS, on each iteration you do an (outplace) update by adding the values at x to x-1 and x+1. And the **sum** of that array on each update represents the total number of moves possible per step.
+
+You would want to store the sum for each move in a vector.
+
+Now that takes care of the problem for a single dimension, but Grid Walking is for multiple dimensions. For two dimensions for example, to get
