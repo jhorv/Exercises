@@ -244,3 +244,31 @@ UPDATE: I am nearly done with Candies, but might have coded myself into a hole w
 The answer I got is good, but it obligates me to study the [continuation passing style](https://en.wikibooks.org/wiki/Haskell/Continuation_passing_style) for a bit, until I can fully understand the code written in the answer. Once I do, I will replicate it in F# and submit that instead. I have only cursory understanding of CPS, just enough to recognize it, but not quite enough to use it. I never expected to run into this again. As expected from Haskell, I guess.
 
 UPDATE: chainCPS has a [confusing type signature.](http://stackoverflow.com/questions/37508652/what-is-the-type-of-the-variables-in-chaincps) Once I figure out what these continuation monads do, I will finally be able to implement the GOTO statement in Haskell.
+
+5/30/2016:
+
+Yesterday I did not write much in the way of code, but I put in a ridiculous effort into figuring out what the [solution given to me](http://stackoverflow.com/questions/37501967/how-to-make-fromlist-lazy-in-this-dynamic-programming-example/) did. My analysis is really basic lambda calculus. I watched the lectures on it while doing the parser for GVGAI, but forgot the lessons of it until now. Also, I did some reading and watching on continuation passing style, so I think I understand that now a bit better as well. As a side note, the aforementioned lectures came in handy a few months ago once when I had to use a Y combinator for a parser in F# as well.
+
+Haskell is such a mind bender. I got two more days of this left. After that I think I will have a change of pace.
+
+Regarding the Candies, the difficult part of it was figuring out the that two passes are much better than one. I missed that one as I was too focused on trying to figure out how to make the DP approach work. Just a few days ago I realized the same lesson for the TBS problem, but did not generalize it for this problem. That was foolish of me.
+
+For the [Stock Maximize](https://www.hackerrank.com/challenges/stockmax?h_r=next-challenge&h_v=legacy) problem, that one strikes me like it could be reduced to Subset Sum.
+
+...Er, no. Simple top down DP would the best for this problem. Like for the Candies problem, there are probably optimizations for this one...
+
+...That I am going to have to find because Haskell cannot do proper top down DP due to lack of mutability. Shit.
+
+UPDATE: Actually, for this problem bottom up is no problem. I'll be able to do it using the Vector as well.
+
+UPDATE: I think I have the algorithm down, but my solution using Vector is quite slow and runs out of memory. Not at all what I expected. Yeah, I am really having difficulty understanding how to write efficient code in Haskell.
+
+At this point, I should look into profiling Haskell programs.
+
+UPDATE: Nah, the N^2 / 2 dynamic programming algorithm that I am using for this problem is not cutting it. Thankfully, I figured out how to do it in N time.
+
+UPDATE: Done. The solution is similar to the last time, in that I need a double pass.
+
+For every stock I just need to sell it on its high, and that high can easily be gotten in linear time by doing a scanr' beforehand.
+
+I'll do [Grid Walking](https://www.hackerrank.com/challenges/grid-walking?h_r=next-challenge&h_v=legacy) next. Actually, it bothers me how slow even the linear algorithm is. I am tempted to rewrite this in F# just to figure out what is wrong.

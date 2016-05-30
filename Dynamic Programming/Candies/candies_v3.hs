@@ -5,13 +5,12 @@ module Main where
 
 
   solve :: [Int] -> Int
-  solve ar = 1 -- loop . zip  (repeat 0)
+  solve = sum . loop
       where
-      --loop :: [(Int, Int)] -> [(Int, Int)]
-      --loop cs = (\(_,_,x) -> x 0 0) . foldr go (0, 0, \_ _ -> []) cs
-      --t = (\(_,_,x) -> x 0 0) $ go (5,5) (1,1,\_ _ -> [(3,4)])
-      go :: (Int, Int) -> (Int, Int, Int -> Int -> [Int]) -> (Int, Int, Int -> Int -> [Int])
-      go (candy, score) (candyP,scoreP,f) =
+      loop :: [Int] -> [Int]
+      loop = (\(_,_,x) -> x 0 0) . foldr go (0, 0, \_ _ -> [])
+      go :: Int -> (Int, Int, Int -> Int -> [Int]) -> (Int, Int, Int -> Int -> [Int])
+      go score (candyP,scoreP,f) =
         let
           candyP' = if scoreP < score then candyP + 1 else 1
           in
@@ -19,11 +18,8 @@ module Main where
               \candyN scoreN ->
                 let
                   candy' = max candyP' $ if scoreN < score then candyN + 1 else 1
-                  in candy' : f candy' score)
-              -- s is the score and c is the candy of the guy before
-              -- if s < score then this guy should get at least c + 1 candies
-
+                  in candy' : f candy' score) -- This part could be replaced with a sum
 
   main = do
       n <- read <$> getLine
-      solve . fmap read <$> replicateM n getLine >>= print
+      (solve . fmap read) <$> replicateM n getLine >>= print

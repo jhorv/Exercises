@@ -5,5 +5,5 @@
 *.hi
 
 *.o
-/T9 Predictions Based On Unigram Frequencies
-/A Basic Spell Checker
+
+*.prof
