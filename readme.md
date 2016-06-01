@@ -383,7 +383,7 @@ So the lesson from the above is, given the title I picked - if one wants to make
 
 A whole lot of work got dumped on me yesterday, so I'll have to put off doing the Grid Walking problem for a few days.
 
-Before I got interrupted, I was having trouble getting my ideas to work. The problem is not in the code, but I have a logic error somewhere in my ideas. I've thought a bit and as a last resort, I did figure out one certain source of invariance - the dimensions are symetric.
+Before I got interrupted, I was having trouble getting my ideas to work. The problem is not in the code, but I have a logic error somewhere in my ideas. I've thought a bit and as a last resort, I did figure out one certain source of invariance - the dimensions are symmetric.
 
 What that means is that in a single dimension with six members, `[1,2,3,4,5,6]` the items can be folded in half like a piece of paper. What that would do is transform the problem in an equivalent one, but one that requires half as much memory and computation for each dimensions.
 
@@ -391,6 +391,6 @@ What that means more specifically, is that `[1,2,3,4,5,6]` would become `[1,2,3]
 
 And in the newly transformed problem the `3` node, instead of dropping the moves if they attempt to go past the edge, it would wrap them around to node `2`.
 
-For 10 dimensional problems, this would cut their total size from 10^x to 5^x, a 1024 reduction in size. Not bad.
+For 10 dimensional problems, this would cut their total size from 10^x to 5^x, a 2^x reduction in size. Not bad.
 
 I am decently sure that this would work, but I do not really understand why I cannot cleanly separate all of the dimensions yet which would allow me to achieve 10*x. I am still missing some pieces. I'll get back to it I when can make time. I'll leave that one day of Haskell in reserve until then.
