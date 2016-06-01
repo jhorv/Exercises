@@ -303,4 +303,94 @@ The 2 in the middle is because the two positions merge - this merging of invaria
 
 You would want to store the sum for each move in a vector.
 
-Now that takes care of the problem for a single dimension, but Grid Walking is for multiple dimensions. For two dimensions for example, to get
+Now that takes care of the problem for a single dimension, but Grid Walking is for multiple dimensions. For two dimensions for example, to get the total number of moves for step two for example, you would need to add T(0,2)+T(1,1)+T(2,0).
+
+It would be difficult to do that thing for 10 dimensions, because you would in essence have a 10 fold iteration. Even if the total number steps is only 30, 30^10 would be quite a lot to iterate over.
+
+The solution is to apply dynamic programming techniques to this particular subproblem.
+
+All one needs to do is simply flatten the two `x`, `y` dimensions to a single dimension `q`. Then you flatten `q` and `z` to `w` and so on. All those recursive applications of dynamic programming allow one to escape the exponential naive scaling and solve the problem in at most N^2 time.
+
+5/31/2016:
+
+The last day of my Haskell practice marathon is here. And to top it off I figured out how to deal with the Choco problem. It came to me last night while I was grinding away at it fruitlessly, trashing it back for in my mind, but perhaps spurned by the lessons of past problem, this time I managed to channel it successfully.
+
+Here is the trick and it build on my compressed graph representation idea. I'll demonstrate it on the 2x2 puzzle to start with.
+
+```
+UU
+UU
+```
+
+What I realized last night is that is possible to eliminate a waste swathe of the search space, by expanding it like so.
+
+```
+#1
+DD
+DU
+```
+```
+#2 (!!!)
+TD
+DU
+```
+```
+#3
+DT
+DU
+```
+```
+#4
+TT
+DU
+```
+```
+#5
+DD
+TU
+```
+```
+#6
+TD
+TU
+```
+```
+#7 (!!!)
+DT
+TU
+```
+```
+#8
+TT
+TU
+```
+
+Now, based on the problem constraints, the `2` and `7` nodes above will always be invalid and can be removed from the expanded pool. So with that one move you have essentially removed 2/8 of all the search space. In 2x2 puzzle that is insignificant, but on the 8x8 puzzle that would be 1/4th of 2^64.
+
+After that you just iterate the process above, always expanding the nodes in the way that would cause the most failure. With that it might be doable to push back against the exponential nature of the problem.
+
+The key is to realize that expanding in groups of at least 3 is necessary. If one does the expansion one by one, the with DFS one will get stuck iterating over the entire search space and BFS will similarly run out of memory because the search space will not get pruned properly.
+
+Now that I've written the above, it amazing that I did not figure this earlier. I knew that CP solvers had the fail first strategy, but I could not generalize it to this problem at all. In fact the way I arrived at the above had nothing to do with that at all. It was just a matter of giving up on the problem in such a way that different parts of my brain could work on it.
+
+Well, that still leaves the tough job of figuring out how to implement the fail-first strategy effectively, but the idea does give a basis to work from.
+
+For today, my task will be to implement the [Grid Walking](https://www.hackerrank.com/challenges/grid-walking) idea. Also, [the SO post](http://stackoverflow.com/questions/37526740/why-is-the-f-version-of-this-program-6x-faster-than-the-haskell-one) for my previous problem really exploded and it singlehandedly tripled my point total on that site. The SO site itself gave me 200 points gratis. **Edit: It seems it got linked on the [Haskell subreddit.](https://www.reddit.com/r/haskell/comments/4lpoej/why_is_the_f_version_of_this_program_6x_faster/)**
+
+So the lesson from the above is, given the title I picked - if one wants to make points, start a language war. I'll keep that lesson close to my heart as I go into the future.
+
+6/1/2016:
+
+A whole lot of work got dumped on me yesterday, so I'll have to put off doing the Grid Walking problem for a few days.
+
+Before I got interrupted, I was having trouble getting my ideas to work. The problem is not in the code, but I have a logic error somewhere in my ideas. I've thought a bit and as a last resort, I did figure out one certain source of invariance - the dimensions are symetric.
+
+What that means is that in a single dimension with six members, `[1,2,3,4,5,6]` the items can be folded in half like a piece of paper. What that would do is transform the problem in an equivalent one, but one that requires half as much memory and computation for each dimensions.
+
+What that means more specifically, is that `[1,2,3,4,5,6]` would become `[1,2,3]` and the `1`,`2`,`3` nodes would get merged with `6`,`5`,`4` nodes respectively.
+
+And in the newly transformed problem the `3` node, instead of dropping the moves if they attempt to go past the edge, it would wrap them around to node `2`.
+
+For 10 dimensional problems, this would cut their total size from 10^x to 5^x, a 1024 reduction in size. Not bad.
+
+I am decently sure that this would work, but I do not really understand why I cannot cleanly separate all of the dimensions yet which would allow me to achieve 10*x. I am still missing some pieces. I'll get back to it I when can make time. I'll leave that one day of Haskell in reserve until then.
