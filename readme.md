@@ -391,6 +391,6 @@ What that means more specifically, is that `[1,2,3,4,5,6]` would become `[1,2,3]
 
 And in the newly transformed problem the `3` node, instead of dropping the moves if they attempt to go past the edge, it would wrap them around to node `2`.
 
-For 10 dimensional problems, this would cut their total size from 10^x to 5^x, a 2^x reduction in size. Not bad.
+For 10 dimensional problems, this would cut their total size from x^10 to (x/2)^10, a 2^10 reduction in size. Not bad.
 
 I am decently sure that this would work, but I do not really understand why I cannot cleanly separate all of the dimensions yet which would allow me to achieve 10*x. I am still missing some pieces. I'll get back to it I when can make time. I'll leave that one day of Haskell in reserve until then.
