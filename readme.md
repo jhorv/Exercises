@@ -394,3 +394,15 @@ And in the newly transformed problem the `3` node, instead of dropping the moves
 For 10 dimensional problems, this would cut their total size from x^10 to (x/2)^10, a 2^10 reduction in size. Not bad.
 
 I am decently sure that this would work, but I do not really understand why I cannot cleanly separate all of the dimensions yet which would allow me to achieve 10*x. I am still missing some pieces. I'll get back to it I when can make time. I'll leave that one day of Haskell in reserve until then.
+
+6/7/2016:
+
+Done familiarizing myself with the basics of networking, so now I have time to resume and finish this. I've done the first naive version of this problem in Haskell which passes only 4 out of 12 test cases and will move to do the rest tomorrow. There is the more advanced version of the algorithm that I have to do, and a bunch of optimizations in addition to that.
+
+I am glad to be back in the programming game. Studying the basics of Linux networking and will no doubt pay off, but I am enjoying this much more, no doubt about it. I've thought so much about the Grid Walking problem that I had to force myself to start doing it as I did not feel like it, but as usual, once I got into it, things started going smoothly for me.
+
+This is the final problem I will do here, before embarking to do reinforcement learning with the help of Theano in Python. I'd far rather be doing it in F#, but as long the programming languages are in this state, without native support for the GPU, I do not have a choice but to go for a big library if I want performance.
+
+I haven't given up on Spiral though. Eventually, I will exhaust the possibilities with regular architectures and will move on to exploring metalearning using nested differentiation. Before that, I want to roll up my sleeve and carve out a niche with what exists in the present.
+
+I am really looking forward to that. I already tried regular RL on a toy poker game and it was absolutely beautiful.
