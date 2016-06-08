@@ -406,3 +406,31 @@ This is the final problem I will do here, before embarking to do reinforcement l
 I haven't given up on Spiral though. Eventually, I will exhaust the possibilities with regular architectures and will move on to exploring metalearning using nested differentiation. Before that, I want to roll up my sleeve and carve out a niche with what exists in the present.
 
 I am really looking forward to that. I already tried regular RL on a toy poker game and it was absolutely beautiful.
+
+6/8/2016:
+
+My idea to cut the dimensions in half will really not be enough. It seems the harder problems are really hard. There probably exists that linear time algorithm. I also did not see that the size of the individual dimension can go up to 100. I misread and thought it was 10.
+
+At any rate, I am finally done with that side job for good this time and will have time to put into this. Also, I am done with Haskell. For this problem I'll move to F# for a bit to make my life easier and I'll do the complete solution in Haskell assuming I can figure out how to go up a level in DP.
+
+I deserve a break from the past week at any rate. Let me see what I can do.
+
+UPDATE:
+
+```
+let t = dp2D ar 3
+
+// Proof that sum (dp1D (sumrow t) 1) + sum (dp1D (sumcol t) 1) = sumall (dp2D t 1)
+let t2 =
+    let sum = Array.sum
+    let r1 = sum (dp1D (sumrow t) 1) + sum (dp1D (sumcol t) 1)
+    let r2 = sumall (dp2D t 1)
+    r1 = r2
+```
+I've come thus far. dp2D is the 2D function for slowing the 2D problem while dp1D solves for the 1D problem. The above is tantalizing proof that the two are related, but I can't seem to move from here. The sums match up for a single step and then everything goes to hell.
+
+...At any rate, I am not thinking about this correctly. Like with all problems, up to now I haven't peeked at the editorial or looked at the other solutions, but maybe I'll have to study some math?
+
+It strikes me that what I get with those 1D arrays is a bit like a linear system of equations...
+
+No, I am at my end with this. It is true that I only got 2-3 hours today, but I do not think I would have solved it even with 10. I'll give it one more day.
