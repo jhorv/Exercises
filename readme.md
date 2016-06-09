@@ -434,3 +434,82 @@ I've come thus far. dp2D is the 2D function for slowing the 2D problem while dp1
 It strikes me that what I get with those 1D arrays is a bit like a linear system of equations...
 
 No, I am at my end with this. It is true that I only got 2-3 hours today, but I do not think I would have solved it even with 10. I'll give it one more day.
+
+6/9/2016:
+
+I am up and I finally have a full day to do programming for the first time in 9 days.
+
+I am going to throw in the towel on doing Grid Walking on my own - it is too difficult. I cannot figure out how to split up the dimension no matter how long I think. To solve this, I probably need something meteoric at this point. I doubt it will turn out that my idea to cut the dimensions in half was right and the reason it failed was because Haskell spews memory all over the place.
+
+At any rate, let me take a look at the forums. I'd rather avoid looking at the editorial.
+
+UPDATE: http://stackoverflow.com/questions/33749876/how-to-apply-recursion
+
+It seems I was close, but not enough. I did not see the binomial calculation at all. Damn. Let me see if I can figure out the principle behind this.
+
+mcervera: "I will try to help by means of an example that shows what the binomial coefficient C(n,k) is exactly counting in this problem.
+
+Let's assume that we have already calculated the matrix paths(d, k), which stores the number of possible paths for each dimension "d" (individually) and for each number of steps "k" (from 0 to M).
+
+Now we want, for example, to integrate the paths of dimensions 1 and 2. If the total number of steps is 3 (M = 3), this means that we have to consider four cases:
+1) paths(1,0) and paths(2,3) --> 0 steps are performed in dimension 1, and 3 steps are performed in dimension 2.
+2) paths(1,1) and paths(2,2) --> 1 step is performed in dimension 1, and 2 steps are performed in dimension 2.
+3) paths(1,2) and paths(2,1) --> 2 steps are performed in dimension 1, and 1 step is performed in dimension 2.
+4) paths(1,3) and paths(2,0) --> 3 steps are performed in dimension 1, and 0 steps are performed in dimension 2.
+
+For example, in case 2), we obtain three possible sequences: {d1,d2,d2}, {d2,d1,d2}, and {d2,d2,d1}. This means that we take one step in dimension 1 and two steps in dimension 2, in any order. Here is where the binomial coefficient C(n,k) comes into the picture, since it counts "in how many ways we can select k elements out of n elements". In this example, we need C(3,1) = 3.
+In general, the number of paths considering dimension 1 and dimension 2 will be the sum from i=0 to i=M of C(M,i) * paths(1,i) * paths(2,M-i).
+
+I hope this helps."
+
+Yeah, the above helps a lot. Agh, I can't believe I missed taking into account all the possible combinations of the two paths. Shit.
+
+This is quite abstract, and I assumed that path(1,i) * path(2,M-i) should take all the combinations in the account naturally - multiplication generally does that sort of thing. I've painstakingly thought of all sorts of representations, such as using the diagonal and even solving linear systems, but to use C(n,k) never even occurred to me.
+
+I guess if I skipped this problem and wandered into a different problem that made me calculate all the possible paths in a standard 1,000,000x1,000,000 grid where the cost of each move is 1, it would have occurred to me how to solve this using the C(n,k) and I would have been able to go back to this problem.
+
+Out of all the sciences, combinatorics never fails to impress me when it comes to practical applications for optimization problems.
+
+UPDATE: Finally got the problem done in F#. 55/55. What a hard problem.
+
+And I am done with the Haskell adventure. It was nice. I learned quite a few things.
+
+Let me make some addendums to Haskell review from earlier, the good stuff:
+
+- The practice I got from this, made me see function composition in a whole new light and what I taken from this that I will use in F# from here will be how to generate arrays immutably. Also, thanks to the practice I got, I completely internalized the unfold function.
+
+- The lambda-stacking fold technique by Behzad Nouri particularly caught my eye. At first I thought doing it that way is crazy, but now I see it is a particularly beautiful way of doing tail recursive functions. It is much safer than the usual thing and it even terminates with a effect. It cannot be done in F# without gross cost in efficiency.
+
+- Despite my misgiving about performance, Haskell's Vector class is quite nice. Too bad it lacks a 2D variant. When it comes to generating immutable Vectors, it made me see the generate (analogous to F#'s init) in a whole new light.
+
+The bad:
+
+- Haskell's code looks very pretty once everything falls into place and you reduce everything to folds, maps and filters and generates. When you have trouble doing that, then Haskell gets annoying to work with. When I started this mid-May, I thought I would be able to got to about 80% effectiveness compared to F# after two and a half weeks from about 20%. Right now I think I am only at 50%, and I do not think I will be able to go above this without significant effort.
+
+- Haskell's learning cure is much steeper than I thought it would be. If it was this hard for me even with significant prior experience in functional programming, I can scarcely imagine how hard it would be for a beginner with no prior knowledge. When I first started F#, I do not remember having this much difficulty with it.
+
+- Haskell's tooling is horrendous compared to F#. The problem is that `ghc-mod`'s feedback is much worse than Intellisense's and when I attempted to open Futhark, I ran into a space leak bug that made it consume over 5Gb of memory which rendered it unusable on my machine. What Haskell's GHC should do is re-implement itself as an API service like C# and F# as per this talk by [Anders Hejlsberg](https://www.reddit.com/r/haskell/comments/4jhhrj/anders_hejlsberg_on_modern_compiler_construction/). As it is now, `ghc-mod` has the unenviable task of catching up to every new development in the main compiler.
+
+- Haskell can do functional programming very well, and can do imperative programming inside the IO and ST monads, but surprisingly, coming from F#, I've had significant difficulty adapting the hybrid imperative/functional style that I've developed in Haskell. I have found it far harder to enter the full flow state like I would do in F#. Also, I would get stuck thinking about things for hours that would take me 10m in F#.
+
+Haskell is surprisingly bad at merging the imperative and functional style, though I might change my mind with more experience.
+
+The final conclusion:
+
+- Considered the best programming language by its proponents, I would rather say that Haskell is the best programming language laboratory along with Scala. It is certainly wildly innovative, but even if I mastered it fully, I cannot imagine myself being as productive in it as in F#. In general, I would place it on par with Python, but with a caveat that the languages were designed for very different things. Haskell's field of expertise seem to be compilers, which is why I picked it up in the first place, while Python is a glue language for various libraries written in much faster languages.
+
+---
+
+That is about it for the review. No doubt I'll be doing more programming in the future in Haskell, but for now it is time I try out Theano with Python for reinforcement learning. Tensorflow should come to Windows eventually as well, and I have no intention of doing my programming in Python forever. .NET should get a solid high level GPU language eventually, and I'll give my small bit towards that goal with Futhark. The recent open sourcing of everything .NET by Microsoft is an enormous stroke of good fortune for the programming community. No company in the world comes even close to MS with regards to programming language research.
+
+Currently, the lack of a high level GPU language is the main bottleneck in machine learning. Maybe not for running experiments on static datasets, but for reinforcement learning and making my own ML library it certainly is.
+
+As an addendum, before I leave this repo, I took a look at the next puzzle - [Red John Is Back](https://www.hackerrank.com/challenges/red-john-is-back). Compared to the last assignment is seems straightforward and it can be cleanly separated into two parts - the first is to calculate the total number of brick configurations and the latter part is to calculate the number of primes up to x. This last part can be done using the sieve of Eristhathones, so I won't get into it here, but the first part while it seems difficult is a variant of the string length problem.
+
+Basically for an give point x, you can either place a vertical brick or 4 horizontal bricks that that up [x,x+3] space. So from the last position, the recursive definition would be as follows:
+
+f(x) = f(x-1) + 4*f(x-3)
+f when x < 0 = 0
+f 0 = 1
+
+Something like that. Just memoize f(x) and then you have the solution. It is certainly not as complex as the previous problem.

@@ -1,8 +1,8 @@
-﻿// A bunch of experiments that I did to get a grip on the HackerRank Grid Walking problem.
-// I never tried proving things in this fashion, but there is a first time for everything.
+﻿// Combinatorics never fails to impress. I forgot to account for all the combinations of the paths. Damn.
 
 let x1,x2 = 0,0
-let d1,d2 = 4,3
+let d1,d2 = 7,10
+let m = 6
 
 let inline modi x = x % 1000000007u
 
@@ -23,6 +23,17 @@ let dp1D (ar : uint32[]) (m : int) =
         |> modi
 
     Seq.fold (fun ar _ -> Array.init ar.Length (read ar)) ar {1..m}
+
+let dp1Dacc (ar : uint32[]) (m : int) =
+    let inline read (ar : uint32[]) i =
+        let inline r i =
+            if i >= 0 && i < ar.Length then ar.[i] else 0u
+        r (i-1) + r (i+1) 
+        |> modi
+
+    Seq.scan (fun ar _ -> Array.init ar.Length (read ar)) ar {1..m}
+    |> Seq.map Array.sum
+    |> Seq.toArray
 
 let sumrow (ar : uint32[,]) =
     let d1,d2 = Array2D.length1 ar, Array2D.length2 ar
@@ -60,42 +71,27 @@ ar1.[x1] <- 1u
 let ar2 = Array.create d2 0u
 ar2.[x2] <- 1u
 
-let t = dp2D ar 3 
+let posm1 = dp1Dacc ar1 m
+let posm2 = dp1Dacc ar2 m
 
-// Proof that sum (dp1D (sumrow t) 1) + sum (dp1D (sumcol t) 1) = sumall (dp2D t 1)
-let t2 = 
-    let sum = Array.sum
-    let r1 = sum (dp1D (sumrow t) 1) + sum (dp1D (sumcol t) 1)
-    let r2 = sumall (dp2D t 1)
-    r1 = r2
+let C =
+    let ar = ResizeArray()
+    ar.Add(Array.create 1 1u)
 
-let tx x = 
-    let sum = Array.sum
-    let r1 = sum (dp1D (sumrow t) x) + sum (dp1D (sumcol t) x)
-    let r2 = sumall (dp2D t x)
-    r1 = r2
+    for up=1 to m do
+        let f i =
+            let r i =
+                if i >= 0 && i < up then ar.[up-1].[i] else 0u
+            r (i-1) + r i |> modi
+        ar.Add(Array.init (up+1) f)
+    ar.ToArray()
 
-// Unfortunately the above is false for more than one step.
-tx 2 = false
-
-// The above is a good first start. But what I need to beat this problem is to linearly separate the dimensions and possibly stitch them back again.
-// So for that, I need to prove that ar.[i,j] = ar1.[i] + ar2.[j] where ar1 and ar2 are ???
-
-// ...
-
-// How about this? (sumrow ar).[i] = ar1.[i] + sum ar2 and (sumrow ar).[j] = sum ar1 + ar2.[j] ?
-// ...No that, can't be it.
-
-let s1 =
-    let sum = Array.sum
-    let r = sumrow t
-    let c = sumcol t
-    let r' = dp1D r 1
-    let c' = dp1D c 1
-
-    let z = dp2D t 1
-    let zr = sumrow z
-    let zc = sumcol z
-    let s = sum r' + sum c'
-    let s' = (s, sum zr, sum zc)
-    (r', c', zr, zc), s', ((r, r', sum r'), (c, c', sum c')), (t,z)
+let r =
+    let s = m
+    let mutable sum = 0u
+    for i=0 to m do
+        let j = s-i
+        sum <- sum+C.[s].[i]*posm1.[i]*posm2.[j]
+    sum
+            
+let r' = dp2D ar m |> sumall
