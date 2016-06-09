@@ -509,7 +509,9 @@ As an addendum, before I leave this repo, I took a look at the next puzzle - [Re
 Basically for an give point x, you can either place a vertical brick or 4 horizontal bricks that that up [x,x+3] space. So from the last position, the recursive definition would be as follows:
 
 f(x) = f(x-1) + 4*f(x-3)
+
 f when x < 0 = 0
+
 f 0 = 1
 
 Something like that. Just memoize f(x) and then you have the solution. It is certainly not as complex as the previous problem.
