@@ -514,7 +514,7 @@ Basically for an give point x, you can either place a vertical brick or 4 horizo
 
 ~~f 0 = 1~~
 
-**Edit: Actually the correct version is this one**
+**Edit: Actually the correct version is this one.**
 
 ```
 f x
@@ -568,10 +568,16 @@ I'll also watch the lectures for this [Parallel Programming](https://www.courser
 
 Really, I need to take it easier.
 
-UPDATE: This problem was not that difficult itself, though it took me a while to realize that for DP to work, lazy data structures (ie. boxed vectors) need to be used. Unboxed ones kept giving me infinite loop errors unfortunately. Actually, this is another point in favor of F# over Haskell. I was really sure that unboxed vectors would work. And then a bit later it took me a bit to realize how step lists work in Haskell.
+UPDATE: This problem was not that difficult itself, though it took me a while to realize that for DP to work, lazy data structures (ie. boxed vectors) need to be used. Unboxed ones kept giving me infinite loop errors unfortunately. Actually, this is another point in favor of F# over Haskell.
+
+I was really sure that unboxed vectors would work. And then a bit later it took me a bit to realize how step lists work in Haskell.
 
 One thing I do not understand yet is how to pass mutable vectors into a function and have them modified there, but I guess that is not important.
 
 At any rate, this went remarkably smoothly, it took me less than two hours to do. I did the sieve imperatively though as that is such a natural imperative algorithm. I did not even bother thinking up a functional version.
 
 With that I think I am satisfied with Haskell.
+
+UPDATE: Actually, no. I thought it might be in terms of speed, but memoization in F# would require a dictionary which would be on par with boxed vectors presumably. I won't hold this against Haskell here. Well, not until the option type becomes a value type in F# at any rate.
+
+Also here is the answer to how to pass the [mutable vector](http://stackoverflow.com/questions/37751142/how-to-modify-or-read-a-mutable-vector-passed-as-an-argument-in-a-function/37751768#37751768). I guess I should have been more observant during my studies of the ST monad. This is good at any rate.

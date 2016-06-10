@@ -9,6 +9,7 @@ module Main where
   import qualified Data.Vector.Unboxed.Mutable as VM
   import qualified Data.Vector as VB
   import qualified Data.List as L
+  import Control.Monad.Primitive
   import Data.STRef
   import Debug.Trace
   import Data.Int
