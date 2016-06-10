@@ -508,11 +508,22 @@ As an addendum, before I leave this repo, I took a look at the next puzzle - [Re
 
 Basically for an give point x, you can either place a vertical brick or 4 horizontal bricks that that up [x,x+3] space. So from the last position, the recursive definition would be as follows:
 
-f(x) = f(x-1) + 4*f(x-3)
+~~f(x) = f(x-1) + 4*f(x-3)
 
 f when x < 0 = 0
 
-f 0 = 1
+f 0 = 1~~
+
+**
+Edit: Actually the correct version is this one
+
+```
+f x
+  | x > 0 = f (x-1) + f (x-4)
+  | x == 0 = 1
+  | otherwise = 0
+```
+**
 
 Something like that. Just memoize f(x) and then you have the solution. It is certainly not as complex as the previous problem.
 
@@ -556,4 +567,12 @@ For today, I think I'll actually do one more problem in Haskell. I think I am fi
 
 I'll also watch the lectures for this [Parallel Programming](https://www.coursera.org/learn/parprog1/) course while I am at it.
 
-Really, I need to take it easy.
+Really, I need to take it easier.
+
+UPDATE: This problem was not that difficult itself, though it took me a while to realize that for DP to work, lazy data structures (ie. boxed vectors) need to be used. Unboxed ones kept giving me infinite loop errors unfortunately. Actually, this is another point in favor of F# over Haskell. I was really sure that unboxed vectors would work. And then a bit later it took me a bit to realize how step lists work in Haskell.
+
+One thing I do not understand yet is how to pass mutable vectors into a function and have them modified there, but I guess that is not important.
+
+At any rate, this went remarkably smoothly, it took me less than two hours to do. I did the sieve imperatively though as that is such a natural imperative algorithm. I did not even bother thinking up a functional version.
+
+With that I think I am satisfied with Haskell.
