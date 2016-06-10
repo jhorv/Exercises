@@ -515,3 +515,45 @@ f when x < 0 = 0
 f 0 = 1
 
 Something like that. Just memoize f(x) and then you have the solution. It is certainly not as complex as the previous problem.
+
+6/10/2016:
+
+I did some thinking last night. There is really a wide gap between my intention and how much I actually feel like programming in Python. I already have a 2k library for ML that is okay and 1k LOC poker game with basic tabular RL players.
+
+In regards to the later, do I really feel like rewriting it all in Python. I wrote yesterday that Haskell is on par with Python, but now I really regret writing that. No way, seriously, there is no way I feel like doing any serious RL work in Python.
+
+In the first place, what was my plan for RL in the first place? I just decided that I need Python + Theano or Tensorflow because I wanted to offload the work on dealing with recurrent nets.
+
+But it is not like I can't do it with Spiral, it will just be slower.
+
+Indeed, having it all made for me would be the right thing to have, but once I start expanding the games the programming burden on me will only increase. 1k is already a bit much to do in Python already and I do not want the burden of dealing with an expanding code base in a dynamic language.
+
+In the first place, I haven't even tried the online poker tables with tabular RL methods, maybe with properly designed coarse features, the lowest stakes would be beatable. Futhermore, if one looks at the Atari games which Deepmind made its first claim to fame, they used feedforward convolutional nets? AlphaGo? The same kind of nets.
+
+Feedforward nets in Spiral are just as good as anywhere else.
+
+In a few years, the F# community will push it as the [data science language](https://github.com/Microsoft/visualfsharp/issues/1123) of choice on the .NET platform, and then what would I do with a large codebase in Python? Scrap it again?
+
+---
+
+So in a nutshell, let me scrap the Python plan and go with what I have. The recurrent net situation will resolve itself on its own, but while seemingly trivial, things like interfacing my bots with online sites will be a lot to keep me busy. Thousands of lines of code will have to be written just for that, and I do not want to rely on a dynamic language for that.
+
+I've looked at Python's features and the functional programming story is dismal.
+
+Haskell on the other hand really does offer a window into the world beyond - I am sure I can get to 70-80% even with its poor tooling, but what I will gain from that is something that I will be able to take back to F#.
+
+In the end it comes to down to style. The code one writes should be beyond all beautiful and efficient. The skills I've painstakingly developed in F# and then augmented in the last few weeks in Haskell are not something I want to let go. It was different than with Haskell - Python won't make me a better programmer. I do not want to change my thinking patterns in ways that are a regression. I certainly don't and I won't.
+
+Coding style is of utmost importance to me. Style is power.
+
+---
+
+So with that, I'll do the wrong thing in the short term and just forget about recurrent nets for the time being. And with that I'll open up a door to more time. The time I would spend rewriting stuff in Python, I will spend to boost my skills even further. And in actuality, I will be able to start RL a lot sooner because of that.
+
+That's beauty.
+
+For today, I think I'll actually do one more problem in Haskell. I think I am finally getting the hang of how to do pure functional programming. I think I have a good idea of how to do everything I could with imperative programming in Haskell now including loops that look backward. I got confused by those DP examples - I did not realize that they are exactly equivalent to loops in an imperative language. In fact, it is amazing that I did not see the connection earlier.
+
+I'll also watch the lectures for this [Parallel Programming](https://www.coursera.org/learn/parprog1/) course while I am at it.
+
+Really, I need to take it easy.
