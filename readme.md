@@ -581,3 +581,11 @@ With that I think I am satisfied with Haskell.
 UPDATE: Actually, no. I thought it might be in terms of speed, but memoization in F# would require a dictionary which would be on par with boxed vectors presumably. I won't hold this against Haskell here. Well, not until the option type becomes a value type in F# at any rate.
 
 Also here is the answer to how to pass the [mutable vector](http://stackoverflow.com/questions/37751142/how-to-modify-or-read-a-mutable-vector-passed-as-an-argument-in-a-function/37751768#37751768). I guess I should have been more observant during my studies of the ST monad. This is good at any rate.
+
+6/12/2016:
+
+Tried the [Mr K Marsh](https://www.hackerrank.com/challenges/mr-k-marsh) only to get a lot of wrong answers. When I thought about it I realized that the fence probably cannot go over a marsh directly. Whops.
+
+The discussion forum is pretty much insane for this problem, for some reason they have not converged to the DP solution to this particular problem. The DP way of doing it would be to for each (x1,x2) combination to keep track of the start and the end step and then iterate over each line. Regardless of the condition, that would make for a m*m*n algorithm. It could be improved by picking the thinner dimension to iterate over which would turn it into a min(m*m*n,n*n*m) algorithm.
+
+At any rate, I thought I did not want to do the assignments for the Scala Parallel programming course, but it occurs to me that I did not internalize the scan operation, so I've decided to do it. Hopefully, I'll have time to do the box blur today. I'll leave Mr K asside for the time being.
