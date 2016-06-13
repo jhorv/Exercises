@@ -619,3 +619,77 @@ Good programming is good programming. I'll never be able to reach 100% of Fsharp
 My troubles with it was that I've been trying to use the same style as in Fsharp without taking the proper preparation to get the same kind of feedback from the compiler. This has only been exacerbated by Haskell's poor tooling.
 
 I'll never forgive this humiliation. I will tame this wild beast that is Haskell.
+
+UPDATE: Done in 2 hours, just as the doctor ordered. `ScopedTypeVariables` are what made this possible. With this I finally have a good grip on Haskell and the complex parts of the language can be ignored as they cover like 1% of real world use cases.
+
+With this I can finally properly interact with the compiler instead of fighting it at every turn as I did for the past month.
+
+UPDATE: [Last problem](https://www.hackerrank.com/challenges/equal), this time for real.
+
+I am addicted to this stuff. I should have stopped when I said final update last time which was a 4 days ago. For this problem I did figure out a few things.
+
+For one, [3,5,5] and [3,5,5,5] and [3,5,5,5,5] are all equivalent problems. So are [5,5,3] and [3,5,5]. Furthermore, now that I've written it out like this, it occurs to me that [3,5,5] and [0,2,2] are also equivalent. This is all food for the DP God.
+
+Still, I am not quite satisfied with this. Do I really need to put in map in a set for this problem? Shouldn't there be a better way?
+
+...Well, when it come to map of sets, an elegant way of doing this would be to pick an element and move it downwards! Then resize the collection so their minimum is at 0. Pretty nice, huh.
+
+For immutable data structures like the ones Haskell favors that would certainly be better than resizing everything else up.
+
+But even with this, this would not be DP. To be dynamic programming this needs a step further.
+
+One other equivalence that just occurred to me is the choice equivalence.
+
+For an array like [3,4,5] choosing 1,2 or 3 is not the same of course, but suppose I choose 3 times, 2 -> 1 -> 3, then that would give the same end result as if I'd picked 1 -> 3 -> 2 or 3 -> 2 -> 1. The only difference is in streaks, so while 1 -> 1 -> 1 would be different from 1 -> 1, 2 -> 2 -> 1 -> 1 is the same as 1 -> 1 -> 2 -> 2.
+
+Another optimization, since I will have to resize the collections downwards would be to not decrease the minimum after it is below a certain threshold compared to the next largest elements. This is to prevent the combinatorial explosion.
+
+Hrrrmmm, I wonder if there is a way to compress this even further...
+
+...Yes, yes there is. Somehow, for these sorts of problems it seems sets and maps are never the right data structure for the job.
+
+The idea is quite brilliant and builds upon the concepts of rather than resizing every other element upward, one needs to resize downward and the moves being independent.
+
+Suppose I have an array like [5,6,7,10]. I know that the optimal solution to this is 4 since I can just reduce 6 by 1, 7 by 2 and 10 by 5. But for an arbitrary array, I can just resize it so that all the elements are in the [5..] range. Basically, the way to problem is structured, it is impossible that a solution will be found before all the elements are reduce to at least the minimum element. So all I have to do is keep track of the number of moves for each element on how long it takes it to reach all the values in the [0..5] range. After that for a [0..5]x[0..number_of_elements] matrix that holds all those moves, I just have to sum up all the columns and then find the min of the resulting [0..5] array. And that is the solution to the problem.
+
+Brilliant. This is the DP solution to the problem. I started off thinking how to compress the breadth first search and then finally arrived at this by carefully considering the structure of the problem.
+
+For once, I did figure out the problem in a timely manner. It took me only 2 hours this time.
+
+Now the point of this exercise is to see whether I can finally attain a bond with the Haskell compiler. I think knowing how to do local type annotations should do the trick.
+
+After this I'll move on to the Scala assignments and then move to analyzing the OpenHoldem program. I do not like how the antivirus removed it the first time I downloaded it. As I am serious about this, I'll have to go each and every line of that program. I rolled my eyes a little about the bots being done in Perl.
+
+Probably the right move would be to rewrite the entire thing in F#, that way I would know where I stand. Also, before I even start that, I need to research stealth. One of my acquaintance told me he attempted it, and go found out within 10 minutes. Now, I am not him, but it is true by any indication that doing stealth properly will be a significant research project. If I get anywhere with this at all, it will be quite a while. Oh well.
+
+Given the type of work ahead of me, I am glad I did not just focus on machine learning. It turned out to be exactly as I thought it would.
+
+UPDATE: The programming itself is going wonderfully, I did in fact get a handle on Haskell, at long last.
+
+I've implemented the above idea and it passes 8/15 test cases. Close, but not yet. It seems that to beat this problem, I need to improve the N^2 algorithm to straight N.
+
+I have the gist of it and am thinking of how to implement the thing in Haskell. To be honest, I am not sure how to do it with multiple arrays merged into one. I have the math of it, but...
+
+Let me try one particular way that I have in mind...
+
+UPDATE: Damn, I am dumb. I've been trying to think of a scheme to merge the arrays together, but it only just now occurred to me, that I only needed to calculate the largest single array and index into it.
+
+To show what I mean here are arrays of size 5,6 and 10.
+
+```
+[1,2,2,1,1,0]
+[2,1,2,2,1,1,0]
+[2,3,3,2,2,1,2,2,1,1,0]
+```
+
+Their top parts are completely identical. I've been constantly recalculating the same thing over and over again. Instead I should have just used the original array to index into this precalculated one.
+
+This is dynamic programming at its finest.
+
+UPDATE: Done with this problem and done with Haskell for the time being.
+
+For this and the last problem, I decided to make a break from my usual patterns and decided to take a look at some of the other solutions. To be honest I had expect them to mostly be the same, but I was astounded to see that literally every single one of them is different from one another. I get the feeling I was the only one to take an actual DP approach for this problem.
+
+One of the solutions for this problem barely even looks as if it was written by a human.
+
+Tomorrow, I'll dedicate my time to Scala, and rest secure that if I even need to hack it out in Haskell, I am safe.
