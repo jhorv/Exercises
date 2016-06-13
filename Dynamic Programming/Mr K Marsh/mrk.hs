@@ -1,51 +1,66 @@
+{-# LANGUAGE ScopedTypeVariables #-}
+
 module Main where
   import Control.Applicative ((<$>))
-  import Control.Monad
-  import Control.Monad.ST
   import Data.ByteString (ByteString)
   import qualified Data.ByteString as B
   import qualified Data.ByteString.Char8 as C
   import qualified Data.Vector.Unboxed as V
-  import qualified Data.Vector.Unboxed.Mutable as VM
   import qualified Data.Vector as VB
   import qualified Data.List as L
-  import Debug.Trace
-  import Data.Int
-  import Data.Word
   import Data.Char
+  import Debug.Trace
 
-  solve :: Int -> VB.Vector ByteString -> Int32
-  solve l =
-    let getTuple :: Int -> Int -> (Int, Int)
-        getTuple n i =
-          let (x0, y0) = (i `div` (n + 1), i `mod` (n + 1)) in
-          if x0 < y0 then (x0, y0) else (n - 1 - x0, n - y0)
-        w2c8 :: Word8 -> Char
-        w2c8 = chr . fromEnum
-        combinations :: Int -> ByteString -> V.Vector (Int32, Int32)
-        combinations i ar =
-          let l' = ((l-1)*l) `div` 2 in
-          V.generate l' (\ j ->
-            let (p1,p2) = getTuple (l-1) j
-                e1 = ar `B.index` p1
-                e2 = ar `B.index` p2
-                c '.' '.' = (fromIntegral i,fromIntegral i)
-                c _ _ = (maxBound, minBound) in
-            c (w2c8 e1) (w2c8 e2)) in
-    V.foldl1' max
-    . V.imap (\i (min',max') ->
-      let (p1',p2') = getTuple (l-1) i
-          (p1,p2) = (fromIntegral p1', fromIntegral p2') in
-      if min' /= maxBound && max' /= minBound && min' /= max'
-      then 2*(p2-p1) + 2*(max'-min') else -1)
-    . VB.foldl1' (V.zipWith (\(min1,max1) (min2,max2) -> (min min1 min2, max max1 max2)))
-    . VB.imap combinations
+  (|>) :: a -> (a -> b) -> b
+  x |> f = f x
 
   main :: IO ()
   main =
-    let parse :: ByteString -> [Int]
-        parse = L.unfoldr $ C.readInt . C.dropWhile (== ' ')
-        pr :: Int32 -> String
-        pr i = if i <= 0 then "impossible" else show i in do
-    [n,l] <- parse <$> B.getLine
-    VB.replicateM n B.getLine >>= putStr . pr . solve l
+    let
+        parse (s :: ByteString) = s |> L.unfoldr (C.readInt . C.dropWhile (== ' '))
+        pr (i :: Int) = if i <= 0 then "impossible" else show i
+        solve (l :: Int) (ars :: VB.Vector ByteString) =
+          let
+              (bijective_loop :: V.Vector (Int, Int)) = V.fromList [(x,y) | x <- [0..l-1], y <- [x+1..l-1]]
+          in
+              ars
+              |> VB.map (\x ->
+                V.generate l (\i ->
+                  let c '.' = 1
+                      c 'x' = 0
+                  in  (x `B.index` i) |> fromEnum |> chr |> c)
+                |> V.postscanl' (\l r -> if r == 1 then l+r else 0) 0)
+              |> (\x -> x :: VB.Vector (V.Vector Int))
+              |> VB.foldl' (\(l :: V.Vector (Int, Int)) (r :: V.Vector Int) ->
+                  let (r' :: V.Vector (Bool, Bool)) =
+                        V.map (\(i1,i2) ->
+                          let p1 = r V.! i1
+                              p2 = r V.! i2
+                          in (i2-i1<p2,p1 == 0 || p2 == 0)
+                          ) bijective_loop
+                  in
+                      V.zipWith (\(m, s) (c1 ,c2) ->
+                        -- This code acts as a state machine
+                        -- The state is determined by the length of the field
+
+                        -- Go to the empty state if one of the endpoints is a marsh
+                        if c2 then (m, 0)
+                          -- If in empty state and no marshes inbetween, start tracking if there are no marshes inbetween
+                        else if s == 0 then let x = fromEnum c1 in (max m x, x)
+                        -- Increase the state by one and modify the max as there are no marshes in between
+                        else if c1 then let x = s+1 in (max m x, x)
+                        -- Increments the state by one, but does not modify the max because there are marshes inbetween
+                        else let x = s+1 in (m, x)
+                      ) l r'
+                ) (V.replicate (V.length bijective_loop) (0,0))
+              |> V.zipWith (\(i1,i2) (m,_) ->
+                if m >= 2 then 2*(i2-i1)+2*(m-1) else -1
+                ) bijective_loop
+              |> V.maximum
+
+    in do
+        [n,l :: Int] <- parse <$> B.getLine
+        (ars :: VB.Vector ByteString) <- VB.replicateM n B.getLine
+        ars |> solve l
+            |> pr
+            |> putStr

@@ -588,4 +588,34 @@ Tried the [Mr K Marsh](https://www.hackerrank.com/challenges/mr-k-marsh) only to
 
 The discussion forum is pretty much insane for this problem, for some reason they have not converged to the DP solution to this particular problem. The DP way of doing it would be to for each (x1,x2) combination to keep track of the start and the end step and then iterate over each line. Regardless of the condition, that would make for a m*m*n algorithm. It could be improved by picking the thinner dimension to iterate over which would turn it into a min(m*m*n,n*n*m) algorithm.
 
-At any rate, I thought I did not want to do the assignments for the Scala Parallel programming course, but it occurs to me that I did not internalize the scan operation, so I've decided to do it. Hopefully, I'll have time to do the box blur today. I'll leave Mr K asside for the time being.
+At any rate, I thought I did not want to do the assignments for the Scala Parallel programming course, but it occurs to me that I did not internalize the scan operation, so I've decided to do it. Hopefully, I'll have time to do the box blur today. I'll leave Mr K aside for the time being.
+
+On the up side, I've managed to develop a new way of structuring code for Haskell which should make it much easier to enter the flow state. Things are definitely falling into place for me with this language.
+
+UPDATE: The Box Blur example was not difficult, but seriously, is that language still having difficulties with for loops? What the hell? I really prefer my functional languages performant. Arrays, fusion, optimization are breakfast, lunch and dinner. And I am warming up to Haskell bit by bit.
+
+It seems the [for loop issue](https://issues.scala-lang.org/browse/SI-1338) has been open for 8 years now. Scala needs to get it together.
+
+I'll finish the Mr K Marsh problem promptly. All I need to do is give the algorithm just a bit extra info.
+
+Also, the Coin Change assignment for the Scala course has a DP solution as can be seen in my folder, but it seems this assignment is an example on how to use DFS in parallel. Actually, this is quite new to me. I thought I knew concurrency and parallelism, but these kinds of applications are new to me.
+
+6/13/2016:
+
+Yesterday, I suffered a huge humiliation because of Haskell. Even though I knew completely how to solve the Mr K problem, I ended up working something like 7h on it and now I've decided to start from scratch on it because the code turned into mush on me.
+
+Tracing the root of the error, I realized that it led all the way to a month ago when I decided to put off figuring out how to do local type annotations. This probably caused me at least 50 hours wasted during the past month and more around 70-80.
+
+At also made me realize what good programming is. I knew it all along. It is not the case that Haskell a particularly worse than F#, it is just that from day one I've been pushed into programming in an unnatural style that only works for clever one liners with Haskell. It looks great, but collapses when the things get heated. The Haskell community has way too much fascination with cleverness. It fascinated me as well, it is my problem that I did not do a proper job of brushing it off.
+
+I am so stupid. Turning on [`ScopedTypeVariables`](https://wiki.haskell.org/Scoped_type_variables) would have been an easy thing to avoid yesterday's debacle, and in fact the linter suggested it, but when I looked at the damn page, I saw...well, just as what I see now, an esoteric compiler of no interest to mortals.
+
+It does not say that with that language extension, I could do things like: `[n,(l :: Int)] <- parse <$> B.getLine` or `solve (i :: Int) (l :: VB.Vector ByteString) = i + VB.length l`, which is enormously useful and would have saved me enormous time. Oh, seriously.
+
+...I've looked a bit on the above, and the documentation on language extensions is seriously abstract, it is ridiculous. Well, no matter.
+
+Good programming is good programming. I'll never be able to reach 100% of Fsharp in Haskell, but with this I will be able to reach 100% of Haskell in Haskell. I'll also make use of the `|>` operator to give me help in chaining expressions along which will be a mayor aid in debugging. Fsharp is right that programs should be read top to bottom. Also getting rid of the `.` operator will allow me to make use of lambda functions with type annotations, which also be a great aid.
+
+My troubles with it was that I've been trying to use the same style as in Fsharp without taking the proper preparation to get the same kind of feedback from the compiler. This has only been exacerbated by Haskell's poor tooling.
+
+I'll never forgive this humiliation. I will tame this wild beast that is Haskell.
