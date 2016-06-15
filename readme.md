@@ -693,3 +693,75 @@ For this and the last problem, I decided to make a break from my usual patterns 
 One of the solutions for this problem barely even looks as if it was written by a human.
 
 Tomorrow, I'll dedicate my time to Scala, and rest secure that if I even need to hack it out in Haskell, I am safe.
+
+6/15/2016:
+
+In the end, it seems Haskell changed me. Just take a look at this beauty.
+
+```
+// I need to figure out the associative operator for parenthesis balancing. Rather than do it Scala, I'll do it in F# here.
+
+//let str = "(()))(()".ToCharArray()
+for i=0 to 100000 do
+    let str =
+        let rng = System.Random()
+        let n = 10
+        Array.unfold (fun i ->
+            if i < n
+            then
+                let r =
+                    rng.Next(3) |>
+                    function
+                    | 0 -> '('
+                    | 1 -> ')'
+                    | 2 -> '.'
+                Some(r,i+1)
+            else
+                None
+            ) 0
+
+    let isBalanced =
+        let rec loop i c =
+            if i < str.Length then
+                let c' =
+                    str.[i] |>
+                    function
+                    | '(' -> 1
+                    | ')' -> -1
+                    | _ -> 0
+                    |> ((+)c)
+                if c' < 0 then false else loop (i+1) c'
+            else c = 0
+        loop 0 0
+
+    let reductionRes =
+        let associative_parenthesis_balancing_operator (a1,a2 as a) (b1,b2 as b) =
+            a1+b1,min a2 (a1+b2) |> min 0
+        let recursive_tree_reduce (ar: _[]) =
+            let rec loop from until =
+                let size = until-from
+                if size = 0 then failwith "It should not get here."
+                elif size = 1 then
+                    ar.[from]
+                else
+                    let mid = from + size/2
+                    associative_parenthesis_balancing_operator (loop from mid) (loop mid until)
+            loop 0 ar.Length
+        str
+        |> Array.map (
+            function
+            | '(' -> 1,1
+            | ')' -> -1,-1
+            | _ -> 0,0)
+        |> recursive_tree_reduce
+
+    let isMatching = isBalanced = (reductionRes |> function (0,0) -> true | _ -> false)
+    if isMatching = false then failwith "Wrong result!"
+```
+My style has been going in this functional direction already, but it seems my experiences of the past month made me make a leap.
+
+The above code essentially proves that I have the correct associative operator for the parallel parenthesis balancing task.
+
+Actually, I figured it out almost by accident. I had been struggling with it for a bit and then decided that using a subtraction operations in the associative operator really did not make sense. So I just added a bunch of `min`s like I'd seen in the Maximum Segment Sum example on Futhark and magic happened.
+
+I can't really say I still get this subject of associativity.
