@@ -755,7 +755,7 @@ for i=0 to 100000 do
             | _ -> 0,0)
         |> recursive_tree_reduce
 
-    let isMatching = isBalanced = (reductionRes |> function (0,0) -> true | _ -> false)
+    let isMatching = isBalanced = (reductionRes = (0,0))
     if isMatching = false then failwith "Wrong result!"
 ```
 My style has been going in this functional direction already, but it seems my experiences of the past month made me make a leap.
