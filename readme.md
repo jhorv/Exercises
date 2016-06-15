@@ -736,7 +736,7 @@ for i=0 to 100000 do
 
     let reductionRes =
         let associative_parenthesis_balancing_operator (a1,a2 as a) (b1,b2 as b) =
-            a1+b1,min a2 (a1+b2) |> min 0
+            a1+b1,min a2 (a1+b2)
         let recursive_tree_reduce (ar: _[]) =
             let rec loop from until =
                 let size = until-from
