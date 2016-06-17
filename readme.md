@@ -765,3 +765,29 @@ The above code essentially proves that I have the correct associative operator f
 Actually, I figured it out almost by accident. I had been struggling with it for a bit and then decided that using a subtraction operations in the associative operator really did not make sense. So I just added a bunch of `min`s like I'd seen in the Maximum Segment Sum example on Futhark and magic happened.
 
 I can't really say I still get this subject of associativity.
+
+6/16/2016:
+
+I am too tired to do anything today, but I guess I'll do some more exercises in Haskell tomorrow.
+
+I expected to be done with the Parallel Programming course today, but it turns that the last assignment is off-the-scale hard. Even doing the first part which is to make and internalize a parallel quadtree would have taken me an entire day, but the instructors thought that would've been too easy it seems, so they tacked on some extra stuff at the end. A lot of extra stuff. It was like they fit the 4 weeks or more that they could not manage in time into that single assignment.
+
+A few months ago while doing research on pathfinding and collision detection, I first read about quadtrees in that context, but decided on a grid for collision detection for the GVGAI library port instead, but it remained stuck in my mind.
+
+I figured I'll have to do this someday, so why not now?
+
+I'll spend some time working on the [data structure](https://www.hackerrank.com/domains/data-structures/arrays) to get myself into the right mindset for dealing with trees - the DP problems and pretty much the majority of my programming experience were using arrays - and then I will try implementing quadtrees in Haskell.
+
+Before I can beat that super assignment from the PP course, I need to internalize them, after that hopefully, the way forward should be easier.
+
+By the way, I looked into quadtrees in Haskell. While the F# pages on Google show complicated, but [straightforward hits](http://fssnip.net/2o), the Haskell pages are off the wall insanity such as using them as [2D arrays](https://hackage.haskell.org/package/QuadTree-0.11.0/docs/Data-QuadTree.html) and [matrix-matrix multiplication](http://jdfrens.blogspot.hr/2010/01/matrix-matrix-multiplication-with.html).
+
+...It is a really big world out there isn't it? There are all sorts of people.
+
+6/17/2016:
+
+I am hungering for more Haskell stuff it seems. Let me round out my education a bit more. I probably won't do the course assignment, but I'll at least make sure to learn about trees so this does not happen again.
+
+I think I'll start with the [Array and simple queries problem](https://www.hackerrank.com/challenges/array-and-simple-queries). It sounds innocuous, but it has only a 5% pass rate and one of the guys in the forum says it took him 4 days. That is roughly how much I am willing on spending on dealing with trees in the first place before I go dissect OpenHoldem.
+
+Let me see what it is about...
