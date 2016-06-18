@@ -18,7 +18,7 @@ I need a break even though it is only 9:15am here.
 
 I think I'll watch the OCaml videos for a bit. I think that might cheer me up. I feel a need to go on a firmer footing.
 
-UPDATE: It seems the course is closed and so are the lectures, so I found these [lecture notes](for a different course) for a different functional programming course in OCaml to tide me over.
+UPDATE: It seems the course is closed and so are the lectures, so I found these [lecture notes](http://www.ii.uni.wroc.pl/~lukstafi/pmwiki/index.php?n=Functional.Functional) for a different course for a different functional programming course in OCaml to tide me over.
 
 My God, the early lectures are damn brutal. I already know this stuff, so it is not a problem to me, but the instructor does not hold back even a little.
 
@@ -28,10 +28,34 @@ It is not my fault, but I really regret how the story SML played out. The greate
 
 Functional programming courses like the one above do not help much either.
 
-Is it really necessary to start off with massive recursion, symbolic differentiation and continuation passing style in like the first three lectures?
+Is it really necessary to start off with massive recursion, symbolic differentiation and continuation passing style in like the first three lectures? **(Edit: Actually, I'll forgive this one since it is obviously not a beginner's class.)**
 
 The greatest thing about the (ML style) functional languages are their type safety and lightweight type inference - the rest is really not that important in comparison. It allows one to use the far stronger hybrid functional/imperative style than would be possible if one programmed in say C++ or Python.
 
 This is pretty much why I gave up on Python after day one. There is no point in programming in a language where I could not be at my best. Scala and Haskell fall into that inconvenient category.
 
-I feel a bit lonely because of this. Two languages is not much to go on, but I should make do.
+I feel a bit lonely because of this. Two great languages is not much to go on, but it should make do. One is enough in fact.
+
+UPDATE: Actually, this stuff in [lecture 5](http://www.ii.uni.wroc.pl/~lukstafi/pmwiki/uploads/Functional/functional-lecture05.pdf) is quite interesting. Would this alternating type list even be possible in F#? And these function signatures...I never even thought of doing type annotations like this. It is quite interesting.
+
+UPDATE: This stuff on modules in genuinely novel to me. And as matter of fact, tree based structures are exactly the area of my current (temporary) interest.
+
+This is good stuff. I wonder if I could replace the OCaml modules with .NET abstract classes, or are there some limitation to this?
+
+Also going through these notes make me wonder whether there was anything in the Expert F# book on this.
+
+UPDATE: Done with lecture 5. I think as an exercise, I am going to be transcribing everything step by step into F# when I am done going through all the notes. Tree based data structures were one thing I was content to leave to libraries, so when the Scala assignment came out, it hit me right where it hurts. I'll plug this hole in my skillset at all cost.
+
+UPDATE: I see that lecture 6 has some stuff on constraint propagation. Damn, I wish I there were videos along with the lectures.
+
+Actually, the difficulty of course is not the problem. A difficulty of a course is not the problem.
+
+The real problem is generally false advertising, which is not the case here though as nowhere does it state that the assignment that would take 5d in reality should take 3h on paper.
+
+There is definitely a lot of good information here.
+
+UPDATE: A third of the day left to go. These lecture notes are too much to go all through in just one day. And I did a lot besides this as well.
+
+It is difficult to explain how natural the OCaml code seems to me. Despite not having written a line of the language before, it crystal clear to me, unlike the Haskell code. This will do it. OCaml will heal my soul. I know what I stand on here; I am not amongst the clouds.
+
+UPDATE: The course even has stuff on constraint propagation. It uses lists though which is bleh.
