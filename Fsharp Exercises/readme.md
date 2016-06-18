@@ -12,7 +12,7 @@ The deeper the abstraction is, the more it needs to be beholden to reality - I t
 
 I do not think learning Haskell past this point will make me a better programmer. The one interesting technique, the lambda-stacking fold is not something I can use in eager languages anyway.
 
-Human-made programming languages might have reached their pinnacle with SML from which F# and OCaml derive. They aren't obsolete anymore than plain arrays and the plus operator is.
+Human-made programming languages might have reached [their pinnacle](https://blogs.janestreet.com/the-ml-sweet-spot/) with SML from which F# and OCaml derive. They aren't obsolete anymore than plain arrays and the plus operator is.
 
 I need a break even though it is only 9:15am here.
 
