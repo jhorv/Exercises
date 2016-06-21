@@ -7,3 +7,13 @@
 *.o
 
 *.prof
+
+*.dll
+
+*.xml
+
+*.config
+
+*.pdb
+
+*.fsproj
