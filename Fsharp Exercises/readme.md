@@ -262,3 +262,115 @@ It is what made me fall in love with functional programming in the first place.
 UPDATE: Let me call it a day. 12h a day as usual is enough. I am trying to figure out how to do the remove in BST. Actually, I forgot when it was, it was for some course I had taken in early 2015 when I was starting out, but back then I implemented the remove function in a BST by simply blanking out the item. Here I will not settle for anything else, but rotating the entire tree.
 
 I thought to use the insert function, but by definition the key type is not the tree type. Hmm...I wonder what I should do? I'll figure it out tomorrow.
+
+6/20/2016:
+
+Here is a good page describing [GADTs](http://mads-hartmann.com/ocaml/2015/01/05/gadt-ocaml.html). So basically they are like ADTs, except can be constrained further. They are like typed ADTs. When I saw this yesterday, I did not have the energy for it, but it is crystal clear to me now at 7:35am. I got up really early today. Hopefully I can work my way up to Red Black trees today.
+
+My bet is that in the future this feature will arrive [in F#](https://fslang.uservoice.com/forums/245727-f-language/suggestions/5664643-add-support-for-gadts). It looks [really convenient](https://blogs.janestreet.com/why-gadts-matter-for-performance/). It has some elements of dependent typing too.
+
+I am not sure what the _ holes in the GADT type declaration are supposed to be doing though.
+
+It seems that just like records, tuples and union types are a match for object-oriented classes, it seems that GADTs are the functional answer to function overloading in some cases. They seem to have features of that.
+
+Well, no matter. I've wasted a full hour on this today.
+
+It is time for me to lock on. Let me deal with the remove function in the binary tree. After that I'll write something for the Simulacrum update. As an aside, I am kind of enjoying making these leading journals, this one, and one private. I'll stop this public one when I am done with these exercises.
+
+UPDATE: Here is an algorithm for node removal in [BST in C++](http://www.algolist.net/Data_structures/Binary_search_tree/Removal). I am not sure if the node splitting algorithm in [lecture 5](http://www.ii.uni.wroc.pl/~lukstafi/pmwiki/uploads/Functional/functional-lecture05.pdf) is doing the same thing.
+
+UPDATE: Yes, yes it is. When `k = k2` the `split_rightmost` function looks for the rightmost key of the left node to switch it with the one being removed.
+
+At any rate, just for show, I made my own `split_leftmost` to look for the leftmost key of the right node. With this I am done with the BST. The next step will be to implement a Red Black tree and maybe a treap after that. After that I'll look into visualizing them and then finally do the quadtrees.
+
+But for now, let me do an update for [Simulacrum](https://gamesoftranscendi.wordpress.com/). Ever since I stopped writing it, there hasn't been a single day I haven't thought about it. Well...I'll save the those thoughts for the update. I'll have it up in a few days.
+
+UPDATE: I am done with the update for the Simulacrum blog.
+
+It is 3,321 words and 19,294 characters (16,008 without whitespaces) long. It took me six hours to write. I'll proofread it twice, once tomorrow and once before I post it.
+
+And looking at my private journal itself, it is 346 pages and 104.8k words long. I had only opened it on May 10th because the previous file had become so large that I could not save it without waiting 10s. This is amazing no matter how one looks at it. Before my 20s I had never penned down my thoughts to anything and only kept them to myself. I had only started this because of the advice that it is a good idea to keep a trading journal.
+
+Actually, sardonically I am tempted to add a piece in the footnote how it would be great to train some bots to learn some programming. Maybe with an unbiased agent we could finally get to the bottom of which programming language is the most superior. ...I'll hold myself back. Those retarded footnotes that make me go back and forth in science articles are the worst thing ever.
+
+No, no, they are useful.
+
+Now, let me proceed with programming. I want to figure out the details for the Red Black tree today.
+
+UPDATE: I've gone through the code from lecture 5 and watched the videos by [zooce](https://www.youtube.com/watch?v=axa2g5oOzCE), but I really need some more. Also that video on optimizing matrix matrix multiplication using dynamic programming seems pretty interesting. As expected, that update took a lot out of me today. I have only a limit amount of focus to spend per day. Internalizing even something like a binary search tree is not an easy task when it is done for the first time.
+
+It might be a good idea to take a look at videos by Sedgewick again, but there are plenty of videos more on the net.
+
+UPDATE: Sedgewick's videos are crystal clear as usual. I feel like I could implement the 2-3 tree right now. I still do not get the Red Black tree. I know the necessary moves, but I do not think the code from lecture 5 implements all the cases from zooce's videos. Maybe that is the simpler left leaning red black trees?
+
+At any rate, I've been awake for around 14h now. I am done.
+
+I've already spent roughly a week on the Scala course. Hopefully I will be done with this trip into the forest in a few days.
+
+For over a month, my focus has been remarkably low due to dealing with Haskell and all sort of things besides that. I'll pick up my output once I clear out the mental baggage that I got from adopting the new languages.
+
+6/21/2016:
+
+I've went through Sedgewick's videos on Left Leaning Red Black trees and completely understand them now. That having said, I still do not understand the regular ones from [lecture 5](http://www.ii.uni.wroc.pl/~lukstafi/pmwiki/uploads/Functional/functional-lecture05.pdf).
+
+...Actually, now that I look at page 35 I can see that all the cases are explicitly written out. Amazing that I never noticed this before.
+
+It is simply too different to look at the pages without focus and with focus.
+
+UPDATE: Ok, actually I think now I can completely visualize the red-black cases after staring at the lecture 5 code for over an hour. This is amazing. ML pattern matching rocks! It also did not occur to me that BSTs will get printed out in order before I implemented it yesterday. Knowing that they are not all over the place helps a lot. Actually, those simple inorder, outorder HackerRank exercises that I did in C++ did help my understanding despite my scoffing at them.
+
+I still do not understand why the RB trees work though. I understand why 2-3 trees do and why LLRB do as they have 1-1 correspondence with 2-3 trees.
+
+I'll have to watch some more videos.
+
+UPDATE: Done with [this one](https://www.youtube.com/watch?v=O3hI9FdxFOM). The last 30m are really tedious. OCaml code is incredibly elegant and actually more understandable than Erik Dehaney's explanation. Unfortunately, he did not cover deletions.
+
+Also, I now understand why RB trees work. That is due to their equivalence to 2-3-4 trees.
+
+Ok, now I almost get everything about them, but I still need to figure out deletions.
+
+Also I think, I've finally settled my feelings in regards to Haskell.
+
+Haskell's problem aren't monads. It is not laziness by default, though that is by a lesser degree. The real problem is functional purity. Monads are just a symptom. I think it is impossible to have a purely functional general purpose language.
+
+The problem with impure languages such as F# though is not that they are impure, but the lack of referential transparency. That could be fixed.
+
+...No actually, referential transparency is directly linked to purity. What I really meant to write is effect tracking.
+
+Maybe something like an effect tracking system like Koka's for ML-like languages would be ideal and would be the true pinnacle of design. It really might be the pinnacle, because if you take the exercise of continually tacking stuff into the type system then you end up with absurd situation where there are no such things as algorithms or even data structures. The entire program would be a type.
+
+...At any rate, after studying Haskell, I am no longer convinced that functional purity is an ideal - despite its advantages, the cost to having the language be like that is significant.
+
+I'll no longer harbor doubts about the way I program and neither will I admire theoretically stuffed language such as Haskell, Scala and Idris.
+
+The irony is that I like F# vs Haskell for the same reason other people would like Python vs C++. That fact is not lost to me.
+
+No matter what, a language does need some dynamism to it. If it is too rigid it is no good.
+
+Edit for the above: As a real world example, the Diffsharp library authors tried to originally implement it in Haskell and found the type system to be an obstacle.
+
+UPDATE: I finally found some time to research deletion. Now that I understand insertion I can see why the courses just skip this part. I wonder if it would be easier in 2-3 trees? My hunch is yes, but I'll have to take a look.
+
+One thing I do not understand why the Fsharp example for LLRB trees is more complex that the imperative version.
+
+Also what is [this](http://www.read.seas.harvard.edu/~kohler/notes/llrb.html)?
+
+Well, no matter. The standard RB tree insert would be trivial to implement right now and is very simple thanks to pattern matching. Though given how difficult delete is here, it might be worth looking for alternatives? 2-3 trees or 2-3-4 trees perhaps.
+
+UPDATE: The [2-3 tree](http://v2matveev.blogspot.hr/2010/03/data-structures-2-3-tree.html) is as one would expect. I would also guess it would be more efficient in general. But what about the deletion in such a thing?
+
+UPDATE: It is conceptually simpler, but I guess it would still require quite a bit of work. For all tree based structures it seems that deletion is significantly more complicated than insertion. Let me add the RBT to the example and then I'll move to the next stage - which is quadtrees and the making a GUI to visualize those things. I do not need a GUI for RB trees, but it might be useful for quadtrees.
+
+UPDATE: I implemented the RB tree on my own without looking at the solution. Benchmarking it against the F# inbuilt set, I see it is around 66% slower.
+
+I am satisfied with this. The next step would be to check out quadtrees. I'll do a bit of that if I have time, but it is time to proofread. I added a bit of extra to the update near the end as well.
+
+UPDATE: Added a few more lines. 3,776 words and 21.8k characters long. Also I did find a few spelling misses, but most likely they were not all. I'll no doubt discover more after I've posted it on the 23rd. It is really hard for me to force myself to read what is actually there instead of skimming what I wrote. One needs to be in the proper mindset for that.
+
+Before calling it a day, let me watch a video on quadtrees.
+
+UPDATE: The lectures I could find on Youtube have really poor video quality or do not go into detail. Here is one that seems [to be watchable](https://www.youtube.com/watch?v=_61ysrPJRDg). I had no idea quadtrees were made for image compression originally.
+
+As usual I was at this for quite a while. I'll continue tomorrow.
+
+It might be worth revisiting Sedgewick's lectures on trees as well. Though he did not cover quadtrees, he did cover kd-trees. I might as well go full hog.

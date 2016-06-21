@@ -1,0 +1,8 @@
+C:\!Haskell\Fsharp Exercises\Trees\Trees\bin\Release\Trees.exe.config
+C:\!Haskell\Fsharp Exercises\Trees\Trees\bin\Release\Trees.XML
+C:\!Haskell\Fsharp Exercises\Trees\Trees\bin\Release\Trees.exe
+C:\!Haskell\Fsharp Exercises\Trees\Trees\bin\Release\Trees.pdb
+C:\!Haskell\Fsharp Exercises\Trees\Trees\bin\Release\FSharp.Core.dll
+C:\!Haskell\Fsharp Exercises\Trees\Trees\bin\Release\FSharp.Core.xml
+C:\!Haskell\Fsharp Exercises\Trees\Trees\obj\Release\Trees.exe
+C:\!Haskell\Fsharp Exercises\Trees\Trees\obj\Release\Trees.pdb
