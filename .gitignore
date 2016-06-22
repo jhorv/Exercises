@@ -12,8 +12,4 @@
 
 *.xml
 
-*.config
-
 *.pdb
-
-*.fsproj

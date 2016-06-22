@@ -374,3 +374,26 @@ UPDATE: The lectures I could find on Youtube have really poor video quality or d
 As usual I was at this for quite a while. I'll continue tomorrow.
 
 It might be worth revisiting Sedgewick's lectures on trees as well. Though he did not cover quadtrees, he did cover kd-trees. I might as well go full hog.
+
+6/22/2016:
+
+I've went through 2/3rds of the way with that video above, but not being able to see the handwritting is really painful. I need a better resource for this.
+
+I am aware that I am doing way more work than is strictly necessary for the Scala assignment, but I'll plug this hole for good. I just remembered that Youtube has a filter function. I think I'll be able to find some better quality videos this way.
+
+UPDATE: No such luck. I am really scouring the internet for information appropriate for my level.
+
+I've moved on to looking at different kind of info.
+https://www.cs.umd.edu/class/spring2008/cmsc420/L17-18.QuadTrees.pdf
+http://www.mikechambers.com/blog/2011/03/21/javascript-quadtree-implementation/
+http://www.i-programmer.info/programming/theory/1679.html
+
+Yeah, I know what quadtrees do, but I am not exactly sure how to use them.
+
+I supposed binary search trees and RB trees were a good intro for me to tree based data structures, but this is ridiculous. At this rate, I am going to end up coding the quadtree on my own and then figure out how to use them myself.
+
+UPDATE: How difficult...I'll go through the relevant section in Sedgewick course on spatial partitioning algorithms and then move straight to coding. This is ridiculous.
+
+UPDATE: Done with the geometric applications in Sedgewick's course. I'll move on to actually implementing them from here. In fact, the section on finding the nearest neighbor from his course could be applicable to quadtrees as well. Last time, I did not focus enough on the lectures, but this time I crystalized it all.
+
+UPDATE: Nope, I still do not have all the pieces here yet. For quadtrees, do I need to determine its sizes ahead of time so I can split on it? It is annoying how little material there is on it.

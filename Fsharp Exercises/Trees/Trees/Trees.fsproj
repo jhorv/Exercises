@@ -53,6 +53,8 @@
     <None Include="binary_search_tree_v0.fsx" />
     <None Include="binary_search_tree_v1.fsx" />
     <Compile Include="binary_search_tree_v2.fs" />
+    <None Include="quadtree.fsx" />
+    <None Include="quadtree_snippet.fsx" />
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
