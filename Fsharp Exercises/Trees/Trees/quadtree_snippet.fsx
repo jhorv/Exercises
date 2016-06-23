@@ -1,4 +1,6 @@
-﻿open System.Drawing
+﻿// I found this on the net. I do not understand it.
+
+open System.Drawing
 
 type IQuadable = 
     abstract member Bounds : Rectangle
