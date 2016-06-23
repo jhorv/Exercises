@@ -432,14 +432,13 @@ type QuadTree =
         let insert (x,y as q) (t: QuadTree) = t.insert q
 
         // The arguments for insert' are boundaries.
-        let rec insert' (x1: float32 option) (x2: float32 option) (y1: float32 option) (y2: float32 option) (t: QuadTree) =
+        let rec insert' (xy: (float32*float32*float32*float32) option) (t: QuadTree) =
             match t with
             | Empty -> Leaf(x, y)
             | Leaf(x',y') ->
                 if x' = x && y' = y then failwith "Cannot insert an item with the same coordinates into a quadtree."
 
-                assert(x1.IsSome && x2.IsSome && y1.IsSome && y2.IsSome)
-                let x1, x2, y1, y2 = x1.Value, x2.Value, y1.Value, y2.Value
+                let x1, x2, y1, y2 = xy.Value
                 Fork(x1,x2,y1,y2,Empty,Empty,Empty,Empty) |> insert (x', y') |> insert (x, y)
             | Fork(x1,x2,y1,y2,nw,ne,sw,se) ->
                 if x >= x1 && x < x2 && y >= y1 && y < y2 then
@@ -447,13 +446,13 @@ type QuadTree =
                     let left, up = x < mid_x, y < mid_y
 
                     match left, up with
-                    | true, true -> Fork(x1,x2,y1,y2,nw |> insert' (Some x1) (Some mid_x) (Some y1) (Some mid_y),ne,sw,se)
-                    | false, true -> Fork(x1,x2,y1,y2,nw,ne |> insert' (Some mid_x) (Some x2) (Some y1) (Some mid_y),sw,se)
-                    | true, false -> Fork(x1,x2,y1,y2,nw,ne,sw |> insert' (Some x1) (Some mid_x) (Some mid_y) (Some y2),se)
-                    | false, false -> Fork(x1,x2,y1,y2,nw,ne,sw,se |> insert' (Some mid_x) (Some x2) (Some mid_y) (Some y2))
+                    | true, true -> Fork(x1,x2,y1,y2,nw |> insert' (Some (x1,mid_x,y1,mid_y)),ne,sw,se)
+                    | false, true -> Fork(x1,x2,y1,y2,nw,ne |> insert' (Some (mid_x,x2,y1,mid_y)),sw,se)
+                    | true, false -> Fork(x1,x2,y1,y2,nw,ne,sw |> insert' (Some (x1,mid_x,mid_y,y2)),se)
+                    | false, false -> Fork(x1,x2,y1,y2,nw,ne,sw,se |> insert' (Some (mid_x,x2,mid_y,y2)))
                 else failwithf "Cannot insert(%A,%A) outside the boundary(%A,%A,%A,%A)." x y x1 x2 y1 y2
 
-        insert' None None None None t    
+        insert' None t    
 
 let a =
     QuadTree
@@ -467,3 +466,33 @@ What the hell do I do with it now? I am not quite sure. Let me go through the bo
 UPDATE: A lot of stuff on [quadtrees is here](http://donar.umiacs.umd.edu/quadtree/).
 
 ...Unfortunately, the demos do seem to be badly out of date. I can't run the Java 1.4 stuff in my browser. Well, nevermind. Let me just go through the book. Hopefully, I should have a grasp of what spatial trees are all about after reading it for a bit.
+
+UPDATE: 37/808. This stuff on 2D range trees is new to me. It seems this will be another book where everything is new to me.
+
+https://www.quora.com/Which-is-the-best-online-course-to-learn-data-structures
+
+http://courses.csail.mit.edu/6.851/spring12/lectures/
+
+Actually, this book I am reading now, and the lectures above are making me realize that I really know nothing about data structures. I also know nothing about computational geometry.
+
+Besides that I think I've been chatty enough so far. I'll keep this journal around for another week and then I'll apply the stealth principle.
+
+In hindsight, one mistake I made over the past week is not look up stuff on the N body simulation. My focus was on tree structures instead of the problem. Had I actually cared about passing the course, this would have been a significant error.
+
+UPDATE: 49/808. The book is quite difficult, no doubt about it. It is making me realize that maybe I should take a computational geometry course instead. Right now I am wondering what are [priority search trees](https://www.youtube.com/watch?v=KO5r0BSRmF4).
+
+I think I'll watch the above instead of trying to churn through the textbook and then I'll look up a proper course on this. And after that, that will be it.
+
+UPDATE: Since I learned to think about tree structures a lot better in the last week or so, I decided to take a look at [treaps](https://www.youtube.com/watch?v=6podLUYinH8) again. I can understand them much better now. In addition to that, on a hunch I checked the deletion function and it seems it is a lot simpler than for other [kinds of trees](http://opendatastructures.org/ods-java/7_2_Treap_Randomized_Binary.html). Nice.
+
+Probabilistic algorithms (such as quicksort) and data structures are pretty great when they aren't being showed into doing learning.
+
+http://t-t-travails.blogspot.hr/2008/07/treaps-versus-red-black-trees.html
+
+This post above looks really interesting. It took him 80 hours to implement LLRB trees. Amazing. It took me like 1h once I internalized them. Now I could probably do it in 10m. Unless he is talking about remove as well. Ah, [he is](http://www.canonware.com/download/rb/rb_new/rb.h). He implemented the thing in pure C no less.
+
+UPDATE: Signed up for the [Edx Computational Geometry](https://courses.edx.org/courses/course-v1:TsinghuaX+70240183x+3T2015/info) course. The instructor is speaking Chinese which is a first for me, but there are English subtitles.
+
+In for a penny, in for a pound. I've been wondering what Delaunay Triangulation was since the time of the Discrete Optimization. Thankfully half the material here is from the Algorithms course.
+
+I think Sedgewick's Algorithms course had the N body problem, so I've considered looking for it, but it seems the course had been taken off the old platform today. Well, nevermind.
