@@ -16,6 +16,7 @@ type QuadTree =
 
         // The arguments for insert' are boundaries.
         let rec insert' (xy: (float32*float32*float32*float32) option) (t: QuadTree) =
+            let insert'' xy = Some xy |> insert'
             match t with
             | Empty -> Leaf(x, y)
             | Leaf(x',y') -> 
@@ -29,10 +30,10 @@ type QuadTree =
                     let left, up = x < mid_x, y < mid_y
 
                     match left, up with
-                    | true, true -> Fork(x1,x2,y1,y2,nw |> insert' (Some (x1,mid_x,y1,mid_y)),ne,sw,se)
-                    | false, true -> Fork(x1,x2,y1,y2,nw,ne |> insert' (Some (mid_x,x2,y1,mid_y)),sw,se)
-                    | true, false -> Fork(x1,x2,y1,y2,nw,ne,sw |> insert' (Some (x1,mid_x,mid_y,y2)),se)
-                    | false, false -> Fork(x1,x2,y1,y2,nw,ne,sw,se |> insert' (Some (mid_x,x2,mid_y,y2)))
+                    | true, true -> Fork(x1,x2,y1,y2,nw |> insert'' (x1,mid_x,y1,mid_y),ne,sw,se)
+                    | false, true -> Fork(x1,x2,y1,y2,nw,ne |> insert'' (mid_x,x2,y1,mid_y),sw,se)
+                    | true, false -> Fork(x1,x2,y1,y2,nw,ne,sw |> insert'' (x1,mid_x,mid_y,y2),se)
+                    | false, false -> Fork(x1,x2,y1,y2,nw,ne,sw,se |> insert'' (mid_x,x2,mid_y,y2))
                 else failwithf "Cannot insert(%A,%A) outside the boundary(%A,%A,%A,%A)." x y x1 x2 y1 y2
 
         insert' None t    

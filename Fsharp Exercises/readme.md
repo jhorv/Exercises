@@ -496,3 +496,17 @@ UPDATE: Signed up for the [Edx Computational Geometry](https://courses.edx.org/c
 In for a penny, in for a pound. I've been wondering what Delaunay Triangulation was since the time of the Discrete Optimization. Thankfully half the material here is from the Algorithms course.
 
 I think Sedgewick's Algorithms course had the N body problem, so I've considered looking for it, but it seems the course had been taken off the old platform today. Well, nevermind.
+
+6/24/2016:
+
+As it turns out Computational Geometry has more to do with algorithms than geometry. The course is split into bite sized chunks but it did just take me 4h just go through the first half of the Convex Hull section. I do not think I'll be able to go through more than 2 sections a day.
+
+Hopefully by the end of this I will have an intuitive understanding of structures such as quadtrees.
+
+UPDATE: 12h is more than enough of this. I had hoped to have gotten a lot further than I have, but these lectures drag on and on. The lectures are nowhere as clear as Sedgewick's either.
+
+I have no idea how Segment Intersection can be reduced to Element Uniqueness. I also did not understand the Divide And Conquer (1) in the Convex Hull module.
+
+But at any rate, it seems this course will be necessary for my future. I know I said screw it to the Scala course, but if I can finish the CG course in time, I'll take a look at some Barnes Hut examples floating around on the net and try to follow the lead from there.
+
+If not, I am going into GUI and computer security (ie. stealth) ironically.
