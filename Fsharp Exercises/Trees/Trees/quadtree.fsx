@@ -43,3 +43,6 @@ let a =
         .create_empty(0.0f,100.0f,0.0f,100.0f).insert(25.0f,25.0f)
         .insert(75.0f,25.0f).insert(25.0f,75.0f).insert(75.0f,75.0f)
         .insert(25.0f,45.0f)
+
+
+20*19*18*20*20

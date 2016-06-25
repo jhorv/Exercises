@@ -510,3 +510,24 @@ I have no idea how Segment Intersection can be reduced to Element Uniqueness. I 
 But at any rate, it seems this course will be necessary for my future. I know I said screw it to the Scala course, but if I can finish the CG course in time, I'll take a look at some Barnes Hut examples floating around on the net and try to follow the lead from there.
 
 If not, I am going into GUI and computer security (ie. stealth) ironically.
+
+6/25/2016:
+
+Done with Geometric Intersection. Earlier today and I did a quick Google search and found this:
+http://scala-blitz.github.io/home/documentation/examples//barneshut.html
+
+I haven't checked it thoroughly yet, but it seems that page has pretty much all I need to pass the assignment. Here is a general tutorial on [Barnes Hut](http://arborjs.org/docs/barnes-hut) to complement the above. I could not find an F# implementation, but there is some stuff in C#.
+
+That having said, there is a point in taking the long way around when training.
+
+It is not unusual for me to take on extra training with a failure as a catalyst.
+
+As for the Computational Geometry course, it is not in the league of Sedgewick's, but it will do nicely. The Geometric Intersection has been a lot smaller than the previous section so I have enough time in a day to pack away half of next one. I'll get to it.
+
+...One more thing. Given current trends, if I project the least amount of time it will take to develop the tools to use RNNs effectively, I arrive at 2-3 years and probably more.
+
+So in regards to poker, I do not expect to be doing anything too advanced until both the software and the GPUs get there. That global synchronization from the persistent RNN paper should be provided by hardware.
+
+I once noted that tabular and feedforward methods should be enough for the lowest stakes. It seems I will be testing that then. But I believe strongly in the power of recurrent nets. They will live up to their promise in reinforcement learning. I hope with all the effort I am putting into this, I will be able to scrunge up some basic income, which would be significant for me.
+
+It is even possible that once recurrent nets start demonstrating their true power that I might not end up sticking in poker for long.
