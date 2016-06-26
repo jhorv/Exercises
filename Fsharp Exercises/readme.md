@@ -526,8 +526,50 @@ As for the Computational Geometry course, it is not in the league of Sedgewick's
 
 ...One more thing. Given current trends, if I project the least amount of time it will take to develop the tools to use RNNs effectively, I arrive at 2-3 years and probably more.
 
-So in regards to poker, I do not expect to be doing anything too advanced until both the software and the GPUs get there. That global synchronization from the persistent RNN paper should be provided by hardware.
+So in regards to poker, I do not expect to be doing anything too advanced until both the software and the GPUs get there. By GPUs I am not implying that they lack power. Rather, that global synchronization from the persistent RNN paper should be provided by hardware.
 
 I once noted that tabular and feedforward methods should be enough for the lowest stakes. It seems I will be testing that then. But I believe strongly in the power of recurrent nets. They will live up to their promise in reinforcement learning. I hope with all the effort I am putting into this, I will be able to scrunge up some basic income, which would be significant for me.
 
 It is even possible that once recurrent nets start demonstrating their true power that I might not end up sticking in poker for long.
+
+UPDATE: ...No, forget those last two paragraphs. Even at 1% power RNNs should be better than feedforward nets. Poker bots will really need some simple memory in the form of past states to be effective. Literally any memory will be better than 0%. I was not wrong with making Spiral.
+
+UPDATE: Let me call it a day here. I am nearly done with Triangulation. These lectures are quite boring actually.
+
+The next two sections seem like they will be long as well.
+
+Damn, originally I intended to dedicate the entirety of June to reinforcement learning. It seems like in the end I will spend zero.
+
+A good idea would be once I am done with this geometry stuff is to go back to the One Poker for which I trained my tabular players and make RNNs work at any cost on them. So what if I do not feel like making GPU kernels for shuffling stuff on the GPU? Just do that on the CPU!
+
+...Fuck Nvidia.
+
+But it is true that I am going to have to learn GUIs and computer security to figure out how to cover my tracks from the poker rooms. And I will have to figure out how to make interfaces for RL players. All of those things are a net benefit on their own that I need to do anyway. And Computational Geometry is filling out my education. The Scala course did show this huge hole in my programming skill. It needs to be filled and so it will.
+
+I also need to get over this addiction of using this repo journal.
+
+Well, let me do it until the end of the course.
+
+6/26/2016:
+
+"Actually, strangely enough this course is giving me focus. One of my goals is to unify all the different algorithms, but doing this is making me realize that I have no chance in hell of doing it. I am just too stupid.
+
+No, even if I set my sight lower of merely improving neural nets by combining them with other algorithms, I still have no clue. Damn.
+
+...I have no chance at all of inventing the Metaheuristic Algorithm with just my abilities.
+
+With Futhark I wanted to learn the optimizations it is doing in order to make use of them, but I wonder if that is the wrong track? Maybe, my own hands are not the ones that will replace all those tens of thousands of lines of smart optimizations with machine learning?
+
+Learning stealth, learning to set up the environment and learning the basics of machine learning (relative to the realm of the Gods) might be the best I can do.
+
+I do believe backpropagation is truly special and the way it improves is not like the other algorithms. It seems quite a bit more profound.
+
+No, humans simply aren't destined to scratch more than the surface of it, or at least I am not."
+
+Here is the excerpt from the other journal. That is the trouble with this - amongst others it caused me to quit programming in high school. The feeling like I am some dog learning new tricks.
+
+It seems that broadly speaking optimization and more narrowly, machine learning are the closest ordinary humans can get to the realm of the divine.
+
+Learning these tricks will not cut it. But on the other hand, they do come in limit amounts and learning them is a rather cheap way to boost one's programming skill, so I'll pack this course away.
+
+Actually, this course is particularly tedious and long winded, so I can't wait to finish the lectures.
