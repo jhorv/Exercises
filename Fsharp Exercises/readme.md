@@ -573,3 +573,17 @@ It seems that broadly speaking optimization and more narrowly, machine learning 
 Learning these tricks will not cut it. But on the other hand, they do come in limit amounts and learning them is a rather cheap way to boost one's programming skill, so I'll pack this course away.
 
 Actually, this course is particularly tedious and long winded, so I can't wait to finish the lectures.
+
+6/27/2016:
+
+Done with Delaunay Triangulation and Point Location. I've skimmed the last part a lot admittedly. I've really spent quite a way just making my way through these lectures and I intend to finish it tomorrow so I can move on to more important things. It was a good idea to watch lectures a 2x speed just like I did yesterday, otherwise I would be spending even more. This allowed me to finish early. I'd go for even longer, but these things are difficult - my brain feels like it will leak out.
+
+The thought that I can win with RNNs even at 1% power is giving me focus. Really, while interesting I do not really care about the Barnes-Hut simulation all that much. I've decided to compromise and just paste as much from that [Scala Blitz link](http://scala-blitz.github.io/home/documentation/examples//barneshut.html).
+
+It is unlikely for me to be so stuck on something even though this time it was on purpose. Though I do not really doubt this particular assignment given that I have the solution right there, sometimes a part of me wonders whether I can even do it...
+
+...Er, actually never mind. I can't really remember a period where I doubted myself. For a period of time, I was depressed over losing to my own image of normal people, and had my kindness spat back in my face, but never doubtful. This is really the one positive thing that I attained with age - firmer grounding in reality and realistic self assessments. Those things would be useless usually, but the one benefit of then is that one can walk deeper into insanity and channel them into creative endeavors.
+
+One sharpens his mind and at that point he see that being confident or being doubtful are both worthless. The only thing one needs to do is watch and listen and focus on the work, and the rest will fall into place.
+
+Though I was not successful at making money, this iron discipline is the one thing I attained over the past decade of my life.
