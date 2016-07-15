@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>0778ecec-627f-487c-be55-57f1a352680e</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>GUI_Experiments</RootNamespace>
+    <AssemblyName>GUI_Experiments</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFSharpCoreVersion>4.4.0.0</TargetFSharpCoreVersion>
+    <Name>Applications Markup Code Part 1</Name>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <Tailcalls>false</Tailcalls>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>3</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DocumentationFile>bin\Debug\GUI_Experiments.XML</DocumentationFile>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <Tailcalls>true</Tailcalls>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>3</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DocumentationFile>bin\Release\GUI_Experiments.XML</DocumentationFile>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
+  </PropertyGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '11.0'">
+      <PropertyGroup Condition="Exists('$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets')">
+        <FSharpTargetsPath>$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets</FSharpTargetsPath>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\FSharp\Microsoft.FSharp.Targets')">
+        <FSharpTargetsPath>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\FSharp\Microsoft.FSharp.Targets</FSharpTargetsPath>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+  <Import Project="$(FSharpTargetsPath)" />
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.fs" />
+    <None Include="App.config" />
+    <Resource Include="packages.config" />
+    <Resource Include="Images\alien.png" />
+    <Resource Include="Images\boldhs.png" />
+    <Resource Include="Images\cagliostro.jpg" />
+    <Resource Include="Images\ColorHS.png" />
+    <Resource Include="Images\Color_fontHS.png" />
+    <Resource Include="Images\CopyHS.png" />
+    <Resource Include="Images\CutHS.png" />
+    <Resource Include="Images\DeleteHS.png" />
+    <Resource Include="Images\Edit_RedoHS.png" />
+    <Resource Include="Images\Edit_UndoHS.png" />
+    <Resource Include="Images\ItalicHS.png" />
+    <Resource Include="Images\NewDocumentHS.png" />
+    <Resource Include="Images\OpenHS.png" />
+    <Resource Include="Images\PasteHS.png" />
+    <Resource Include="Images\printHS.png" />
+    <Resource Include="Images\saveHS.png" />
+    <Resource Include="ImagesDir\35FLOPPY.BMP" />
+    <Resource Include="ImagesDir\CDDRIVE.BMP" />
+    <Resource Include="ImagesDir\CLSDFOLD.BMP" />
+    <Resource Include="ImagesDir\DRIVE.bmp" />
+    <Resource Include="ImagesDir\OPENFOLD.BMP" />
+    <Compile Include="Bindings.fs" />
+    <None Include="InheritTheApp.fsx" />
+    <None Include="ThrowWindowParty.fsx" />
+    <None Include="GrowAndShrink.fsx" />
+    <None Include="TypeYourTitle.fsx" />
+    <None Include="VaryTheBackground.fsx" />
+    <None Include="FlipThroughTheBrushes.fsx" />
+    <None Include="GradiateTheBrush.fsx" />
+    <None Include="AdjustTheGradient.fsx" />
+    <None Include="FollowTheRainbow.fsx" />
+    <None Include="CircleTheRainbow.fsx" />
+    <None Include="ClickTheGradient.fsx" />
+    <None Include="RotateTheGradientOrigin.fsx" />
+    <None Include="DisplaySomeText.fsx" />
+    <None Include="RecordKeystrokes.fsx" />
+    <None Include="ShowMyFace.fsx" />
+    <None Include="ShapeAnElipse.fsx" />
+    <None Include="FormatTheText.fsx" />
+    <None Include="ToggleBoldAndItalic.fsx" />
+    <None Include="RenderTheGraphics.fsx" />
+    <None Include="ClickTheButton.fsx" />
+    <None Include="FormatTheButton.fsx" />
+    <Compile Include="ImageTheButton.fs" />
+    <None Include="CommandTheButton.fsx" />
+    <None Include="ToggleTheButton.fsx" />
+    <None Include="BindTheButton.fsx" />
+    <None Include="UriDialog.fsx" />
+    <None Include="NavigateTheWeb.fsx" />
+    <None Include="EditSomeText.fsx" />
+    <None Include="EditSomeRichText.fsx" />
+    <None Include="5_StackTenButtons.fsx" />
+    <None Include="StackThirtyButtons.fsx" />
+    <None Include="StackFiftyButtons.fsx" />
+    <None Include="DesignAButton.fsx" />
+    <None Include="TuneTheRadio.fsx" />
+    <None Include="ExploreDirectories.fsx" />
+    <None Include="6_DockAroundTheBlock.fsx" />
+    <None Include="MeetTheDockers.fsx" />
+    <None Include="CalculateYourLife.fsx" />
+    <None Include="EnterTheGrid.fsx" />
+    <None Include="SpanTheCells.fsx" />
+    <None Include="SplitNine.fsx" />
+    <None Include="SplitTheClient.fsx" />
+    <None Include="ScrollCustomColors.fsx" />
+    <None Include="7_PaintTheButton.fsx" />
+    <None Include="PlayJeuDeTacquin.fsx" />
+    <None Include="8_SetSpaceProperty.fsx" />
+    <None Include="9_ExamineRoutedEvents.fsx" />
+    <None Include="DrawCircles.fsx" />
+    <None Include="DrawCirclesFsharp.fsx" />
+    <None Include="ShadowTheStylus.fsx" />
+    <None Include="ShadowTheMouse.fsx" />
+    <None Include="ExamineKeyStrokes.fsx" />
+    <None Include="10_RenderTheBetterEllipse.fsx" />
+    <None Include="GetMedieval.fsx" />
+    <None Include="11_EllipseWithChild.fsx" />
+    <None Include="EncloseElementInEllipse.fsx" />
+    <None Include="CalculateInHex.fsx" />
+    <None Include="BuildButtonFactory.fsx" />
+    <None Include="SelectColor.fsx" />
+    <None Include="12_DuplicateUniformGrid.fsx" />
+    <None Include="PaintOnCanvasClone.fsx" />
+    <None Include="DiagonalizeTheButtons.fsx" />
+    <None Include="CircleTheButtons.fsx" />
+    <None Include="13_ListColorNames.fsx" />
+    <None Include="ListColorValues.fsx" />
+    <None Include="ListNamedColors.fsx" />
+    <None Include="ListNamedBrushes.fsx" />
+    <None Include="ListColorShapes.fsx" />
+    <None Include="ListColoredLabels.fsx" />
+    <None Include="ListWithListBoxItems.fsx" />
+    <None Include="ListColorsElegantly.fsx" />
+    <None Include="ListColorsEvenElegantlier.fsx" />
+    <None Include="SelectColorFromGrid.fsx" />
+    <None Include="SelectColorFromWheel.fsx" />
+    <None Include="14_PeruseTheMenu.fsx" />
+    <None Include="CheckTheWindowStyle.fsx" />
+    <None Include="CheckTheColor.fsx" />
+    <None Include="SelectColorFromMenuGrid.fsx" />
+    <None Include="CutCopyAndPaste.fsx" />
+    <None Include="ControlXCV.fsx" />
+    <None Include="CommandTheMenu.fsx" />
+    <None Include="PopupContextMenu.fsx" />
+    <None Include="15_CraftTheToolbar.fsx" />
+    <None Include="MoveTheToolbar.fsx" />
+    <None Include="FormatRichText.fsx" />
+    <None Include="16_ManuallyPopulateTreeView.fsx" />
+    <None Include="RecurseDirectoriesIncrementally.fsx" />
+    <None Include="TemplateTheTree.fsx" />
+    <None Include="ShowClassHierarchy.fsx" />
+    <None Include="ListSystemParameters.fsx" />
+    <None Include="ListSortedSystemParameters.fsx" />
+    <None Include="ExploreDependencyProperties.fsx" />
+    <None Include="18_NotepadClone.fsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="FsXaml.Wpf">
+      <HintPath>..\packages\FsXaml.Wpf.2.1.0\lib\net45\FsXaml.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FsXaml.Wpf.TypeProvider">
+      <HintPath>..\packages\FsXaml.Wpf.2.1.0\lib\net45\FsXaml.Wpf.TypeProvider.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

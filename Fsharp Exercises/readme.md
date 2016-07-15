@@ -587,3 +587,23 @@ It is unlikely for me to be so stuck on something even though this time it was o
 One sharpens his mind and at that point he see that being confident or being doubtful are both worthless. The only thing one needs to do is watch and listen and focus on the work, and the rest will fall into place.
 
 Though I was not successful at making money, this iron discipline is the one thing I attained over the past decade of my life.
+
+6/29/2016:
+
+Yesterday I threw in the towel on the last chapter of Computation Geometry as it was too tedious and before I went to sleep did most of the Scala assignment. Just now I finished submitting it and got a notification that I passed the course. With this I am done.
+
+It was not that hard with the Scala Blitz example. It took me only a few hours.
+
+Writing this journal and the Haskell one was fun. Maybe I'll do a bunch of GUI examples here later, but since the stuff I will be doing from here need to be kept under wraps, I think I'll bring it to a close here.
+
+7/15/2016:
+
+Here in the Fsharp folder can now be found all the examples from the first 16 chapters of the book `Applications = Markup + Code` by Charles Petzold apart from the first two or three from chapter one. I had wanted to do part 2 as well, but I put that on hold until the [FsXaml type provider](https://github.com/fsprojects/FsXaml) gets some documentation.
+
+It is just as well, I've been studying WPF since my last post here once I figure that I really needed a GUI for poker game. I was going to resume work it, but I forgot that I actually can't accept key inputs from F# Interactive since last time I touched it and realizing that doing everything from the command line is a stupid idea motivated me to do this study right now. I'll need this knowledge once I start making RL interfaces anyway.
+
+Though it is just as well that I stopped here as going through the entire book would have taken me another two weeks and believe me, I am tired of it by now. I am really aching to do some real programming.
+
+Actually, I quite liked the book and can recommend it for the first part which does everything from just code. For part two, I suppose I could have hacked it somehow, but F# really can't compete with the Xaml to C# code generation feature from the C# compiler. It also lacks partial classes.
+
+The book can be found in the Genesis library as can most other things. It is a wonderful repository. My thanks to that guy on the ML sub for recommending it to me.
