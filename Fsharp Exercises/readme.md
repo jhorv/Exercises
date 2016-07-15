@@ -598,12 +598,18 @@ Writing this journal and the Haskell one was fun. Maybe I'll do a bunch of GUI e
 
 7/15/2016:
 
-Here in the Fsharp folder can now be found all the examples from the first 16 chapters of the book `Applications = Markup + Code` by Charles Petzold apart from the first two or three from chapter one. I had wanted to do part 2 as well, but I put that on hold until the [FsXaml type provider](https://github.com/fsprojects/FsXaml) gets some documentation.
+Here in the Fsharp folder can now be found all the examples from the first 16 chapters of the book `Applications = Markup + Code` by Charles Petzold, apart from the first two or three from chapter one. I had wanted to do part 2 as well, but I decided to put that on hold until the [FsXaml type provider](https://github.com/fsprojects/FsXaml) gets some documentation.
 
-It is just as well, I've been studying WPF since my last post here once I figure that I really needed a GUI for poker game. I was going to resume work it, but I forgot that I actually can't accept key inputs from F# Interactive since last time I touched it and realizing that doing everything from the command line is a stupid idea motivated me to do this study right now. I'll need this knowledge once I start making RL interfaces anyway.
+I've been studying WPF non-stop since my last post here as I realized that I really needed a GUI for poker game. I was going to resume work on the game, but I forgot that I actually can't accept key inputs from F# Interactive since last time I touched it and realizing that doing everything from the command line is a stupid idea motivated me to do this study right now. I'll need this knowledge once I start making RL interfaces anyway.
 
-Though it is just as well that I stopped here as going through the entire book would have taken me another two weeks and believe me, I am tired of it by now. I am really aching to do some real programming.
+It is just as well that I stopped here as going through the entire book would have taken me another two weeks and believe me, I am tired of it by now. I am really aching to do some real programming.
 
-Actually, I quite liked the book and can recommend it for the first part which does everything from just code. For part two, I suppose I could have hacked it somehow, but F# really can't compete with the Xaml to C# code generation feature from the C# compiler. It also lacks partial classes.
+Actually, I quite liked the book and can recommend it for the first part which does everything from just code. For part two, I suppose I could have hacked it somehow, but F# really can't compete with the Xaml to native code generation feature from the C# compiler. It also lacks partial classes, though it does have type extensions which are better.
 
 The book can be found in the Genesis library as can most other things. It is a wonderful repository. My thanks to that guy on the ML sub for recommending it to me.
+
+My next project will be a really simple calculator using the expression parser. I'll do this to get familiar with this aspect of parser combinators in anticipation of my future work on Futhark. I had intended to spend 1 month on RL and one month on it, but that plan is already wrecked. Last month I ended up studying Linux networking, more Haskell and computational geometry. And half of this month I spent studying graphical user interfaces.
+
+There is no way I can possibly make time for it at this rate. So at least for the sake of future investment in the burgeoning language, until its authors either implement a Cuda backend for it or shared memory optimizations, I will just rewrite the parser to avoid that hideous memory leak bug in `ghc-mod`.
+
+After I do that, I'll have fulfilled my responsibility for the near term and will be able to leave it out of mind for a few quarters or halves.
