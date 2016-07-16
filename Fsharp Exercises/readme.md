@@ -613,3 +613,15 @@ My next project will be a really simple calculator using the expression parser. 
 There is no way I can possibly make time for it at this rate. So at least for the sake of future investment in the burgeoning language, until its authors either implement a Cuda backend for it or shared memory optimizations, I will just rewrite the parser to avoid that hideous memory leak bug in `ghc-mod`.
 
 After I do that, I'll have fulfilled my responsibility for the near term and will be able to leave it out of mind for a few quarters or halves.
+
+7/16/2016:
+
+Added the expression parser calculator example using Fparsec. It was much easier than I'd through it would be to make it. With this I won't have any trouble when it some to making the Futhark parser.
+
+I think that with this level of knowledge, I can move to the next level in my RL work.
+
+As for this repo, I have nothing more in plan for it. To be honest, I've been thinking whether or not I should post my poker stuff on Github. It is probably less of a big deal than it seems at first glance since there is no way anybody will be reading this - poker sites are more likely to rely on automation than crawl though users Github pages. And it only occurred to me a while ago that I do not have my real name in my profile anyway.
+
+Well, I can only lose by posting that material online so I won't. Exercise stealth and all that.
+
+Until later, cyao.
