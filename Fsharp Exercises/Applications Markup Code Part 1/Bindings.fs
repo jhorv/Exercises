@@ -20,6 +20,18 @@ open System.Windows.Documents
 open System.Windows.Threading
 open System.Windows.Data
 
+/// Adds row definitions to container
+let inline addRowDefs (rows: RowDefinition[]) cont =
+    for x in rows do
+        (^a : (member RowDefinitions: RowDefinitionCollection) cont).Add x
+    cont
+
+/// Adds column definitions to container
+let inline addColDefs (cols: ColumnDefinition[]) cont =
+    for x in cols do
+        (^a : (member ColumnDefinitions: ColumnDefinitionCollection) cont).Add x
+    cont
+
 /// Appends to the UIElementCollection
 let inline addChildren cont child = 
     (^a : (member Children: UIElementCollection) cont).Add child |> ignore
@@ -30,6 +42,15 @@ let inline addGrid (cont: Grid) row col child =
     cont.Children.Add child |> ignore
     Grid.SetRow(child,row)
     Grid.SetColumn(child,col)
+    child
+
+/// Appends to the Grid. Also has the row span and column span arguments.
+let inline addGrid' (cont: Grid) row rowSpan col colSpan child = 
+    cont.Children.Add child |> ignore
+    Grid.SetRow(child,row)
+    Grid.SetRowSpan(child,rowSpan)
+    Grid.SetColumn(child,col)
+    Grid.SetColumnSpan(child,colSpan)
     child
 
 /// Appends to the ItemCollection
