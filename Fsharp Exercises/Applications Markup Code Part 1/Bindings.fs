@@ -20,6 +20,11 @@ open System.Windows.Documents
 open System.Windows.Threading
 open System.Windows.Data
 
+/// Sets the Content propert of ctrl to x
+let inline setAsContentFor ctrl x =
+    (^a: (member set_Content: obj -> unit) ctrl, x)
+    x
+
 /// Adds row definitions to container
 let inline addRowDefs (rows: RowDefinition[]) cont =
     for x in rows do
@@ -33,19 +38,19 @@ let inline addColDefs (cols: ColumnDefinition[]) cont =
     cont
 
 /// Appends to the UIElementCollection
-let inline addChildren cont child = 
+let inline addChildren cont child =
     (^a : (member Children: UIElementCollection) cont).Add child |> ignore
     child
 
 /// Appends to the Grid
-let inline addGrid (cont: Grid) row col child = 
+let inline addGrid (cont: Grid) row col child =
     cont.Children.Add child |> ignore
     Grid.SetRow(child,row)
     Grid.SetColumn(child,col)
     child
 
 /// Appends to the Grid. Also has the row span and column span arguments.
-let inline addGrid' (cont: Grid) row rowSpan col colSpan child = 
+let inline addGrid' (cont: Grid) row rowSpan col colSpan child =
     cont.Children.Add child |> ignore
     Grid.SetRow(child,row)
     Grid.SetRowSpan(child,rowSpan)
@@ -54,12 +59,12 @@ let inline addGrid' (cont: Grid) row rowSpan col colSpan child =
     child
 
 /// Appends to the ItemCollection
-let inline addItems cont child = 
+let inline addItems cont child =
     (^a : (member Items: ItemCollection) cont).Add child |> ignore
     child
 
 /// Appends to the Collection
-let inline addToolBars cont child = 
+let inline addToolBars cont child =
     (^a : (member ToolBars: Collections.ObjectModel.Collection<_>) cont).Add child |> ignore
     child
 
